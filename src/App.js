@@ -2,7 +2,7 @@ import React from 'react'
 
 const App = () => {
   return (
-    <div>i am buliding netflix</div>
+    <div>starteed buliding netflix project </div>
   )
 }
 
