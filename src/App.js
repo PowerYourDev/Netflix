@@ -1,8 +1,21 @@
 import React from 'react'
+import { createBrowserRouter } from 'react-router-dom'
+import { RouterProvider } from 'react-router-dom'
+import Login from './components/Login'
+
+const appRouter=createBrowserRouter([
+  {
+    path:"/",
+    element:<Login/>,
+  }
+])
 
 const App = () => {
   return (
-    <div>starteed buliding netflix project </div>
+
+   <>
+    <RouterProvider router={appRouter}/>
+   </>
   )
 }
 
