@@ -6,8 +6,8 @@ import {
   signInWithEmailAndPassword,
 } from "firebase/auth";
 import { useNavigate } from "react-router-dom";
-import { UseSelector, useDispatch, useSelector } from "react-redux";
-import { UseDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+
 
 //components imports
 import Header from "./Header";
