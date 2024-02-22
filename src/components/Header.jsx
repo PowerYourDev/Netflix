@@ -17,7 +17,7 @@ const Header = () => {
     navigate("/")
   }
   return (
-    <div className="bg-gradient-to-b from-black">
+    <div className="bg-gradient-to-b from-black absolute">
       <img src={netflixLogo} alt="" className="w-52 ml-[9%]" />
       <button onClick={handleLogout}>logout</button>
     </div>
