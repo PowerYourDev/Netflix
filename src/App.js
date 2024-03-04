@@ -7,6 +7,7 @@ import { RouterProvider } from 'react-router-dom'
 import Login from './components/Login'
 import MoviesBrowse from './components/MoviesBrowse'
 import ProtectedRoutes from './components/ProtectedRoutes'
+import FullVideo from "./components/FullVideo"
 
 const appRouter=createBrowserRouter([
   {
@@ -19,6 +20,10 @@ const appRouter=createBrowserRouter([
       {
         path:"/movies-browse",
         element:<MoviesBrowse/>,
+      },
+      {
+        path:"/movie-playing/:id",
+        element:<FullVideo/>,
       }
     ]
   }

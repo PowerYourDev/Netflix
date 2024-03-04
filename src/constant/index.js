@@ -13,4 +13,4 @@ export const API_OPTIONS = {
     }
   };
 
-  export const POSTER_CDN="https://image.tmdb.org/t/p/w780/"
+  export const POSTER_CDN="https://image.tmdb.org/t/p/original/"

@@ -9,8 +9,8 @@ import VideoInfo from './VideoInfo'
 
 const CurrentmoviePlaying = () => {
   const nowPlayingMovies=useSelector((state)=>state.moviesSlice?.nowPlayingMovies)
-   const randomIndex = Math.floor(Math.random() * nowPlayingMovies.length);
-  const nowPlayingmovie=nowPlayingMovies[randomIndex]
+   const randomIndex =nowPlayingMovies && Math.floor(Math.random() * nowPlayingMovies?.length);
+  const nowPlayingmovie=nowPlayingMovies&&nowPlayingMovies[randomIndex]
 
 
 
