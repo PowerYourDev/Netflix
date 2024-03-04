@@ -11,6 +11,8 @@ import plusIcon from "../../Assets/svg/plusIcon.svg";
 import {  POSTER_CDN } from "../../constant";
 import useFetchMovieVideos from "../../customHooks/useFetchMovieVideos";
 import useFetchLogo from "../../customHooks/useFetchLogo";
+import useFetchMovieDetaills from "../../customHooks/useFetchMovieDetaills";
+import {convertMinutesToHoursAndMinutes} from "../common/index"
 
 const CardPopup = ({ active, item }) => {
   const navigate = useNavigate();
@@ -24,28 +26,38 @@ const CardPopup = ({ active, item }) => {
       state?.moviesSlice?.nowPlayingHoverMovieVideo?.playingHoverMovieLogo
   );
 
+  const movieDetails = useSelector(
+    (state) =>
+      state?.moviesSlice?.nowPlayingHoverMovieVideo?.playingHoverMovieDetails
+  );
+
   useFetchMovieVideos(item?.id, "hoverVideo");
   useFetchLogo(item?.id, "popUpLogo");
+  useFetchMovieDetaills(item?.id)
 
   const videoPlayHandler = (id) => {
     navigate("/movie-playing/" + id);
   };
+
+
+  
   return (
     <div
-      className="bg-transparent fixed top-0 left-0  right-0 bottom-0 m-auto  w-1/5  h-1/5 z-20 "
+      className="bg-black fixed top-0 left-0  right-0 bottom-0 m-auto  w-1/5  h-1/5 z-20"
       style={{
         animationName: active ? "card" : "card-exit",
         animationDuration: "0.6s",
         animationFillMode: "forwards",
         animationTimingFunction: "cubic-bezier(0.25, 0.1, 0.25, 1.0)",
         zIndex: 20,
+        
         // animationDelay: !active ? "0.1s" : "0s",
         // transform: "scale(1.5)",
       }}
     >
       <div className="relative">
         {hoverMovie ? (
-          <div className="w-full h-full -mt-[7%] ">
+          <div className="w-full h-full -mt-[7%] bg-black">
             <iframe
               onClick={() => videoPlayHandler(item?.id)}
               className="w-full h-full aspect-video "
@@ -63,7 +75,7 @@ const CardPopup = ({ active, item }) => {
           className="w-[35%] h-[25%] absolute left-4 bottom-3"
         />
       </div>
-      <div className="p-4 bg-[#181818]">
+      <div className="p-4 bg-[#181818] ">
         <div className="flex justify-between ">
           <div>
             <div
@@ -88,6 +100,28 @@ const CardPopup = ({ active, item }) => {
               <img src={expandIcon} alt="expandIcon" />
             </div>
           </div>
+        </div>
+        <div className="flex text-[#bcbcbc] gap-[0.5em] my-[0.8em]">
+          <h3 className="text-green-500 font-medium text-[13px]">{(movieDetails?.vote_average).toFixed(2)}% Rating</h3>
+        
+            <h5 className="border-solid border-[hsla(0, 0%, 100%, .4)] border-[0.5px] text-[13px] font-medium px-[0.4em]">{movieDetails?.adult  ?"A": "U/A 16+"}</h5>
+      
+
+          <h3 className="text-[13px] font-medium ">{convertMinutesToHoursAndMinutes(movieDetails?.runtime)}</h3>
+          <h6 className="text-[hsla(0, 0%, 100%, .9)] border-solid border-[hsla(0, 0%, 100%, .4)] border-[0.5px] px-[0.4em] text-[13px]">HD</h6>
+        </div>
+
+        <div className="flex text-white items-center">
+          {movieDetails?.genres.map((genre,index)=>{ 
+            return (
+              <>
+             
+              <h4>{genre.name}</h4>
+              {(index < movieDetails?.genres.length-1) && <h4 className="text-gray-600 px-[7px] self-center">•</h4> }
+              </>
+            )
+
+          })}
         </div>
       </div>
     </div>
