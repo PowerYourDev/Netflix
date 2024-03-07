@@ -11,7 +11,8 @@ const moviesSlice = createSlice({
     nowPlayingHoverMovieVideo: {
       playingHoverMovieVideo:null,
       playingHoverMovieLogo:null,
-      playingHoverMovieDetails:null
+      playingHoverMovieDetails:null,
+      playingHoverSimilarMovies:null,
     },
   },
   reducers: {
@@ -33,6 +34,14 @@ const moviesSlice = createSlice({
     addNowPlayingHoverMovieDetails: (state, action) => {
       state.nowPlayingHoverMovieVideo.playingHoverMovieDetails = action.payload;
     },
+    addNowPlayingHoverSimilarMovies: (state, action) => {
+      state.nowPlayingHoverMovieVideo.playingHoverSimilarMovies = action.payload;
+    },
+    makingToIntialState: (state, action) => {
+      state.nowPlayingMovies = null;
+      state.nowPlayingBackGroundMovieVideo.playingBackGroundMovieLogo = null;
+      state.nowPlayingBackGroundMovieVideo.playingBackGroundMovieVideo = null;
+    },
   },
 });
 
@@ -44,4 +53,6 @@ export const {
   addNowPlayingHoverMovieLogo,
   addNowPlayingBackGroundMovieLogo,
   addNowPlayingHoverMovieDetails,
+  addNowPlayingHoverSimilarMovies,
+  makingToIntialState,
 } = moviesSlice.actions;

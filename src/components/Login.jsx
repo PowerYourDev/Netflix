@@ -90,14 +90,14 @@ const Login = () => {
 
   return (
     <div
-      className="h-lvh"
+      className="h-screen"
       style={{ backgroundImage: `url(${netflixBgimage})` }}
     >
       <Header />
       <form
         noValidate
         onSubmit={handleSubmit(onSubmit)}
-        className="flex justify-center items-center h-[calc(100vh-11rem)] text-white"
+        className="flex justify-center items-center h-screen text-white"
       >
         <div className="sm:w-1/4 bg-[rgba(0,0,0,0.7)] flex flex-col  px-[4%] py-[48px]">
           <h1 className="font-bold text-[2rem] mb-4">

@@ -12,14 +12,15 @@ const Card = ({ item }) => {
 
   return (
     <div>
+      {active && (
+        <CardPopup item={item} active={active} setActive={setActive} />
+      )}
       <div className="h-[131px] w-[230px]">
         <img
           src={POSTER_CDN + item.poster_path}
           className="w-full h-full"
           onClick={posterPopupHandler}
         />
-
-        <div>{active && <CardPopup item={item} active={active} />}</div>
       </div>
     </div>
   );

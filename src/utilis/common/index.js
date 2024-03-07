@@ -14,3 +14,5 @@ export const truncateString=(text, maxLength) =>{
     const remainingMinutes = minutes % 60;
     return `${hours}h ${remainingMinutes}m`;
   }
+
+ 

@@ -4,23 +4,29 @@ import { useSelector } from 'react-redux'
 
 import BackgroundVideo from './BackgroundVideo'
 import VideoInfo from './VideoInfo'
+import Header from "../../Header"
 
 
 
 const CurrentmoviePlaying = () => {
-  const nowPlayingMovies=useSelector((state)=>state.moviesSlice?.nowPlayingMovies)
-   const randomIndex =nowPlayingMovies && Math.floor(Math.random() * nowPlayingMovies?.length);
-  const nowPlayingmovie=nowPlayingMovies&&nowPlayingMovies[randomIndex]
+  const nowPlayingMovies=useSelector((state)=>state?.moviesSlice?.nowPlayingMovies)
+  const randomIndex = nowPlayingMovies ? Math.floor(Math.random() * nowPlayingMovies.length) : 0;
+  
+  const nowPlayingMovie =nowPlayingMovies&&nowPlayingMovies[randomIndex]
 
 
+if (!nowPlayingMovies) return null
 
   return (
     <div>
+       
+       <Header />
+     
         {/* videoInfoContainer */} 
-        <VideoInfo {...nowPlayingmovie}/>
+        <VideoInfo {...nowPlayingMovie}/>
 
       {/* backgroundVideoContainer */}
-      <BackgroundVideo nowPlayingMovieId={nowPlayingmovie?.id} posterPath={nowPlayingmovie?.backdrop_path}/>
+      <BackgroundVideo nowPlayingMovieId={nowPlayingMovie?.id} posterPath={nowPlayingMovie?.backdrop_path}/>
         
        
 

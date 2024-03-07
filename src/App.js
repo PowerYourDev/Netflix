@@ -5,9 +5,12 @@ import { RouterProvider } from 'react-router-dom'
 
 
 import Login from './components/Login'
-import MoviesBrowse from './components/MoviesBrowse'
 import ProtectedRoutes from './components/ProtectedRoutes'
 import FullVideo from "./components/FullVideo"
+
+import MoviesBrowse from './components/MoviesBrowse'
+// import Tvsowh from './pages/TvShows'
+// import Home from './pages/Home'
 
 const appRouter=createBrowserRouter([
   {
@@ -19,6 +22,22 @@ const appRouter=createBrowserRouter([
     children:[
       {
         path:"/movies-browse",
+        element:<MoviesBrowse/>,
+      },
+      {
+        path:"/tv-shows",
+        element:<MoviesBrowse/>,
+      },
+      {
+        path:"/movies",
+        element:<MoviesBrowse/>,
+      },
+      {
+        path:"/my-lists",
+        element:<MoviesBrowse/>,
+      },
+      {
+        path:"/new-popular",
         element:<MoviesBrowse/>,
       },
       {
