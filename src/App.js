@@ -7,6 +7,7 @@ import { RouterProvider } from 'react-router-dom'
 import Login from './components/Login'
 import ProtectedRoutes from './components/ProtectedRoutes'
 import FullVideo from "./components/FullVideo"
+import MyList from  "./components/myList"
 
 import MoviesBrowse from './components/MoviesBrowse'
 // import Tvsowh from './pages/TvShows'
@@ -34,7 +35,7 @@ const appRouter=createBrowserRouter([
       },
       {
         path:"/my-lists",
-        element:<MoviesBrowse/>,
+        element:<MyList/>,
       },
       {
         path:"/new-popular",

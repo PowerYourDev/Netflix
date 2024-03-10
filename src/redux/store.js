@@ -7,11 +7,13 @@ import { combineReducers } from "@reduxjs/toolkit";
 //reducers  imports
 import userSlice from "./sliceReducers/userSlice";
 import moviesSlice from "./sliceReducers/movieSlice";
+import userTabSlice from "./sliceReducers/userTabSlice";
 
 
 const reducer = combineReducers({
   userSlice: userSlice,
   moviesSlice:moviesSlice,
+  userTab:userTabSlice,
 });
 
 const persistConfig = {

@@ -20,7 +20,7 @@ if (!nowPlayingMovies) return null
   return (
     <div>
        
-       <Header />
+   
      
         {/* videoInfoContainer */} 
         <VideoInfo {...nowPlayingMovie}/>

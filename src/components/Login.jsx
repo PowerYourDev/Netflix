@@ -8,11 +8,12 @@ import {
 import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 
+import { doc,setDoc } from "firebase/firestore";
 
 //components imports
 import Header from "./Header";
 import { netflixBgimage } from "../constant";
-import { auth } from "../utilis/firebase";
+import { auth,db } from "../utilis/firebase";
 import { addUser } from "../redux/sliceReducers/userSlice";
 
 
@@ -62,6 +63,9 @@ const Login = () => {
           email,
           password
         );
+        setDoc(doc(db,"users",email),{
+          myListItem:[]
+        })
         console.log(isUserCreated.user);
       } catch (error) {
         const errorCode = error.code;

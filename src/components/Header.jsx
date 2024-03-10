@@ -7,19 +7,23 @@ import { netflixLogo } from "../constant";
 import { removeUser } from "../redux/sliceReducers/userSlice";
 import {profileIcon} from "../constant"
 import { makingToIntialState } from "../redux/sliceReducers/movieSlice";
+import { addCurrentUserTab } from "../redux/sliceReducers/userTabSlice";
 
 
 const Header = () => {
   const userData = useSelector((state) => state?.userSlice);
+  const activeItem = useSelector((state)=>state?.userTab?.currentUserTab)
+
+
 
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
   const [headerEffect, setHeaderEffect] = useState(false);
-  const [activeItem,setActiveItem]=useState("/movies-browse")
+  
 
   const handleHeadeEffect = () => {
-    console.log(window.scrollY);
+
     if (window.scrollY > 70) {
       setHeaderEffect(true);
     } else {
@@ -35,8 +39,8 @@ const Header = () => {
   };
 
   const handleNavigate=(item)=>{
-  //  dispatch(makingToIntialState())
-    setActiveItem(item)
+   dispatch(makingToIntialState())
+  dispatch(addCurrentUserTab(item))
     navigate(item);
 
   }
@@ -52,7 +56,7 @@ const Header = () => {
         <div
           className={`${
             headerEffect ? "bg-[#141414]" : "bg-transparent"
-          } bg-gradient-to-b from-black to-transparent fixed top-0 left-0 z-30 w-full h-[70px]  px-[3%] transition-all duration-300 ease-in flex justify-between items-center`}
+          } bg-gradient-to-b from-black to-transparent fixed top-0 left-0 z-30 w-full h-[70px]  px-[3%] transition-all duration-500 ease-in flex justify-between items-center`}
         >
           <div className="flex items-center gap-x-10">
 
@@ -68,10 +72,15 @@ const Header = () => {
            </ul>
         </div>
 
-        <div className="flex gap-5"> 
+        <div > 
+        <ul className="flex gap-5 text-[#e5e5e5]">
           <input type="text" />
+          {/* tv shows Top rated children */}
+          <li className={`${activeItem ==="/new-popular" && 'font-bold'} cursor-pointer hover:text-[#b3b3b3]`} >Children</li>
          <img src={profileIcon} alt="" srcset="" />
+          
 
+           </ul>
         </div>
         </div>
       ) : (

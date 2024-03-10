@@ -2,6 +2,9 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
 
+import { doc,updateDoc,arrayUnion } from "firebase/firestore";
+import { db,auth } from "../firebase";
+
 import expandIcon from "../../Assets/svg/expandIcon.svg";
 import crossIcon from "../../Assets/svg/crossIcon.svg";
 import playIcon from "../../Assets/svg/playIcon.svg";
@@ -17,6 +20,8 @@ import ExpandPopup from "./ExpandPopup";
 
 const CardPopup = ({ active, item,setActive }) => {
   const navigate = useNavigate();
+  const userData = useSelector((state) => state?.userSlice);
+
   const hoverMovie = useSelector(  (state) =>state?.moviesSlice?.nowPlayingHoverMovieVideo?.playingHoverMovieVideo);
 
   const popUpLogo = useSelector( (state) =>  state?.moviesSlice?.nowPlayingHoverMovieVideo?.playingHoverMovieLogo);
@@ -40,6 +45,24 @@ const [expandPopUp,setExpandPopUp]=useState(false)
  const CloseExpandPopUp=()=>{
   setExpandPopUp(false)
   setActive(false)
+ }
+
+ const handleSetListItem=async(item)=>{
+
+  const userEmail =userData?.email
+  try {
+     if(userEmail){
+      const userDoc = doc(db,'users',userEmail)
+   await updateDoc(userDoc,{
+    myListItem:arrayUnion({...item})
+   })
+     
+    console.log("Document written with ID: ", userDoc);
+  }
+ } catch (e) {
+    console.error("Error adding document: ", e);
+  }
+
  }
 
   return (
@@ -97,9 +120,11 @@ const [expandPopUp,setExpandPopUp]=useState(false)
               <img src={playIcon} alt="playIcon" />
             </div>
 
-            <div className="border border-solid border-[rgba(255, 255, 255, 0.7)] p-[8px] inline-block rounded-full mx-[0.25em] cursor-pointer">
+            <div className="border border-solid border-[rgba(255, 255, 255, 0.7)] p-[8px] inline-block rounded-full mx-[0.25em] cursor-pointer" onClick={()=>{handleSetListItem(item)}}>
               <img src={plusIcon} alt="plusIcon" />
             </div>
+
+
             <div className="border border-solid border-[rgba(255, 255, 255, 0.7)] p-[8px] inline-block rounded-full  mx-[0.25em] cursor-pointer">
               <img src={crossIcon} alt="crossIcon" />
             </div>
@@ -131,7 +156,7 @@ const [expandPopUp,setExpandPopUp]=useState(false)
         </div>
 
         <div className="flex text-white items-center">
-          {movieDetails?.genres.map((genre, index) => {
+          {movieDetails?.genres?.map((genre, index) => {
             return (
               <>
                 <h4>{genre.name}</h4>

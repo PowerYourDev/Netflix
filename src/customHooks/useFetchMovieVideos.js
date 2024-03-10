@@ -1,5 +1,5 @@
 import { React, useEffect } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch,useSelector } from "react-redux";
 
 import { API_OPTIONS } from "../constant";
 import {
@@ -8,13 +8,22 @@ import {
 } from "../redux/sliceReducers/movieSlice";
 
 const useFetchMovieVideos = (nowPlayingMovieId, BackgroundVideo) => {
+
+  const activeItem = useSelector((state)=>state?.userTab?.currentUserTab)
   console.log(nowPlayingMovieId);
   const dispatch = useDispatch();
+
+  let  Api_URL;
+  if(activeItem==="/movies-browse" || activeItem==="/movies"){
+    Api_URL=`https://api.themoviedb.org/3/movie/${nowPlayingMovieId}/videos`
+  }else if(activeItem==="/tv-shows"){
+    Api_URL=`https://api.themoviedb.org/3/tv/${nowPlayingMovieId}/videos`
+  }
 
   const fetchMovieVideos = async () => {
     try {
       const movieVideosJsonData = await fetch(
-        `https://api.themoviedb.org/3/movie/${nowPlayingMovieId}/videos`,
+        Api_URL,
         API_OPTIONS
       );
       const movieVideosData = await movieVideosJsonData.json();
@@ -38,7 +47,7 @@ const useFetchMovieVideos = (nowPlayingMovieId, BackgroundVideo) => {
 
   useEffect(() => {
     fetchMovieVideos();
-  }, []);
+  }, [activeItem]);
 };
 
 export default useFetchMovieVideos;
