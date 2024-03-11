@@ -9,6 +9,7 @@ import crossIcon from "../../Assets/svg/crossIcon.svg";
 import { convertMinutesToHoursAndMinutes } from "../common/index";
 import useFetchSimilarMovies from "../../customHooks/useFetchSimilarMovies";
 import SimilarMoviesPopUp from "./SimilarMoviesPopUp";
+import { extractYear } from "../common/index";
 
 const ExpandPopup = ({
   hoverMovie,
@@ -36,7 +37,7 @@ const ExpandPopup = ({
   return (
     <div className="w-3/5 h-screen bg-black fixed top-[35px] left-0 right-0  mx-auto z-30 rounded-2xl  overflow-y-scroll no-scrollbar ">
       <div className="relative">
-        {hoverMovie ? (
+        {hoverMovie.key ? (
           <div className="w-full h-full bg-gradient-to-t from-[#181818] to-transparent bg-opacity-100">
             <iframe
               onClick={() => videoPlayHandler(item?.id)}
@@ -100,9 +101,7 @@ const ExpandPopup = ({
                 </div>
               )}
 
-              <div className="bg-black bg-opacity-60 border border-solid border-[rgba(255, 255, 255, 0.7)] p-[8px] inline-block rounded-full  mx-[0.25em] cursor-pointer ">
-                <img src={crossIcon} alt="crossIcon" />
-              </div>
+             
             </div>
 
             <div>
@@ -117,23 +116,23 @@ const ExpandPopup = ({
       <div className="grid grid-cols-12 gap-x-[3em] px-[3em]">
         <div className="col-span-8">
           <div className="my-[0.5em]">
-            <div className="flex ">
+            <div className="flex gap-x-3 items-center mb-2">
               <h3 className="text-green-500 font-medium text-[13px]">
                 {movieDetails?.vote_average?.toFixed(2)}% Rating
               </h3>
 
-              <h3 className="text-white">{movieDetails?.release_date}</h3>
+              <h3 className="text-white">{extractYear(movieDetails?.release_date)}</h3>
 
               <h3 className="text-[13px] font-medium text-white">
                 {convertMinutesToHoursAndMinutes(movieDetails?.runtime)}
               </h3>
 
-              <h6 className="text-[hsla(0, 0%, 100%, .9)] border-solid border-[hsla(0, 0%, 100%, .4)] border-[0.5px] px-[0.4em] text-[13px]">
+              <h6 className="text-[hsla(0, 0%, 100%, .9)] border-solid border-[hsla(0, 0%, 100%, .4)] border-[0.5px] px-[0.4em] text-[13px] text-white">
                 HD
               </h6>
             </div>
-            <div className="flex">
-              <h5 className="border-solid border-[hsla(0, 0%, 100%, .4)] border-[0.5px] text-[13px] font-medium px-[0.4em]">
+            <div className="flex gap-x-3 ">
+              <h5 className="border-solid border-[hsla(0, 0%, 100%, .4)] border-[0.5px] text-[13px] font-medium px-[0.4em] text-white">
                 {movieDetails?.adult ? "A" : "U/A 16+"}
               </h5>
 
@@ -143,7 +142,7 @@ const ExpandPopup = ({
                     <>
                       <h4>{genre?.name}</h4>
                       {index < movieDetails?.genres.length - 1 && (
-                        <h4 className="text-white self-center">,</h4>
+                        <h4 className="text-white self-center mr-1">,</h4>
                       )}
                     </>
                   );
@@ -159,36 +158,36 @@ const ExpandPopup = ({
           </div>
         </div>
         <div className="col-span-4">
-          <div className=" text-white">
-            <h3>
-              <span>cast: </span>
+        <div className="text-white my-[0.5em]">
+            <div className="flex flex-wrap">
+              <span className="text-[#777]">Cast: </span>
               {movieDetails?.genres?.map((genre, index) => {
                 return (
-                  <>
+                  <h3 className=" ml-1">
                     {genre?.name}
                     {index < movieDetails?.genres.length - 1 && (
                       <span className="text-white">,</span>
                     )}
-                  </>
+                  </h3>
                 );
               })}
-            </h3>
+            </div>
           </div>
 
-          <div className=" text-white">
-            <h3>
-              <span>cast: </span>
+          <div className="text-white my-[0.5em]">
+            <div className="flex flex-wrap">
+              <span className="text-[#777]">Cast: </span>
               {movieDetails?.genres?.map((genre, index) => {
                 return (
-                  <>
+                  <h3 className=" ml-1">
                     {genre?.name}
                     {index < movieDetails?.genres.length - 1 && (
                       <span className="text-white">,</span>
                     )}
-                  </>
+                  </h3>
                 );
               })}
-            </h3>
+            </div>
           </div>
         </div>
       </div>

@@ -3,7 +3,8 @@ import { useSelector } from "react-redux";
 
 import { POSTER_CDN } from "../../constant";
 import plusIcon from "../../Assets/svg/plusIcon.svg";
-import { truncateString } from ".";
+import { truncateString } from "./index";
+import { extractYear } from "./index";
 
 const SimilarMoviesPopUp = () => {
   const similarMovieData = useSelector(
@@ -27,16 +28,16 @@ const SimilarMoviesPopUp = () => {
                   className="w-full h-full object-cover"
                 />
                </div>
-                   <div className="p-[1.2em] bg-[#2f2f2f] h-1/3">
-                <div className="flex justify-between">
-                  <div className="flex">
-                    <h5 className="border-solid border-[hsla(0, 0%, 100%, .4)] border-[0.5px] text-[13px] font-medium px-[0.4em]  mr-[0.5em]">
+                   <div className="p-[1.2em] bg-[#2f2f2f] h-1/3 text-[#bcbcbc]">
+                <div className="flex justify-between items-center ">
+                  <div className="flex w-1/2 flex-wrap text-[16px] items-center gap-x-2 ">
+                    <h5 className="border border-solid border-white border-opacity-40  font-medium px-[0.4em]   uppercase">
                       {movie?.adult ? "A" : "U/A 16+"}
                     </h5>
-                    <h6 className="text-[hsla(0, 0%, 100%, .9)] border-solid border-[hsla(0, 0%, 100%, .4)] border-[0.5px] text-[13px] font-medium ">
+                    <h6 className=" border border-solid border-white border-opacity-40 text-[0.7em] font-medium px-[0.5em] ">
                       HD
                     </h6>
-                    <h3 className="text-white">{movie?.release_date}</h3>
+                    <h3>{extractYear(movie?.release_date)}</h3>
                   </div>
 
                   <div className="border border-solid border-[rgba(255, 255, 255, 0.7)] p-[8px] inline-block rounded-full mx-[0.25em] cursor-pointer">

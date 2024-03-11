@@ -7,7 +7,7 @@ export const truncateString=(text, maxLength) =>{
     }
   }
 
-  // converting mins to requried format
+  // converting minutes to requried format
  export const convertMinutesToHoursAndMinutes=(minutes) =>{
   
     const hours = Math.floor(minutes / 60);
@@ -15,4 +15,9 @@ export const truncateString=(text, maxLength) =>{
     return `${hours}h ${remainingMinutes}m`;
   }
 
+// converting full date to just year
+  export const extractYear=(dateString) =>{
+    const date = new Date(dateString);
+    return date.getFullYear();
+  }
  
