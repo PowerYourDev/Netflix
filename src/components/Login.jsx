@@ -7,6 +7,7 @@ import {
 } from "firebase/auth";
 import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
+import { toast } from "react-toastify";
 
 import { doc, setDoc } from "firebase/firestore";
 
@@ -40,20 +41,26 @@ const Login = () => {
           email,
           password
         );
+
         if (isSignedIn?.user) {
           const { accessToken, email, photoURL } = isSignedIn?.user;
 
-          console.log(isSignedIn?.user);
           dispatch(addUser({ accessToken, email, photoURL }));
           navigate("/movies-browse");
           dispatch(fetchMyListData(isSignedIn?.user));
+          toast.success("Login successful. Welcome back!");
         }
-
-        console.log(isSignedIn.user);
       } catch (error) {
-        const errorCode = error.code;
-        const errorMessage = error.message;
-        console.log(errorCode + "-" + errorMessage);
+        if (error?.code === "auth/invalid-credential") {
+          toast.error("Invalid login credentials. Please try again!");
+        } else {
+          toast.error("Something went wrong, please try again later!");
+        }
+        // console.log(error)
+        // const errorCode = error.code;
+        // const errorMessage = error.message;
+
+        // console.log(errorCode + "---" + errorMessage);
       }
     } else {
       //sign-up
@@ -66,12 +73,22 @@ const Login = () => {
         setDoc(doc(db, "users", email), {
           myListItem: [],
         });
-        console.log(isUserCreated.user);
+
+        if (isUserCreated?.user) {
+          toast.success("Account created successfully. Please sign in.!");
+          setSignIn(false);
+        }
+        console.log(isUserCreated);
       } catch (error) {
-        const errorCode = error.code;
-        const errorMessage = error.message;
-        console.log(errorCode + "-" + errorMessage);
-        console.log(error);
+        if (error?.code === "auth/email-already-in-use") {
+          toast.error("Email already exist!");
+        } else {
+          toast.error("Something went wrong, please try again later!");
+        }
+
+        // const errorCode = error.code;
+        // const errorMessage = error.message;
+        // console.log(errorCode + "---" + errorMessage);
       }
     }
   };
