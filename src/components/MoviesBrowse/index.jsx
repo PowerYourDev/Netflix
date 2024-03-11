@@ -7,6 +7,7 @@ import { addNowPlayingMovies } from "../../redux/sliceReducers/movieSlice";
 import CurrentmoviePlaying from "./CurentMoviePlaying";
 import MovieLists from "./movieLists";
 
+
 const MoviesBrowse = () => {
   
   const dispatch = useDispatch();
@@ -41,7 +42,7 @@ const MoviesBrowse = () => {
     fetchNowPlayingMovies();
   }, [activeItem]); 
 
-  
+ 
 
 
   return (

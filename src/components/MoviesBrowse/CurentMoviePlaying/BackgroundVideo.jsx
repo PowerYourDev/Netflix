@@ -6,12 +6,12 @@ import { POSTER_CDN } from "../../../constant";
 import useFetchMovieVideos from "../../../customHooks/useFetchMovieVideos";
 
 
-const BackgroundVideo = ({ nowPlayingMovieId, posterPath }) => {
+const BackgroundVideo = (nowPlayingMovie) => {
   const video= useSelector((state)=>state.moviesSlice?.nowPlayingBackGroundMovieVideo?.playingBackGroundMovieVideo)
  
   console.log(video, "video");
 
-  useFetchMovieVideos(nowPlayingMovieId,"BackgroundVideo")
+  useFetchMovieVideos(nowPlayingMovie,"BackgroundVideo")
   // if (!video) return null;
 
   return (
@@ -26,7 +26,7 @@ const BackgroundVideo = ({ nowPlayingMovieId, posterPath }) => {
           ></iframe>
         </div>
       ) : (
-        <img className="w-full" src={POSTER_CDN + posterPath} alt="" />
+        <img className="w-full" src={POSTER_CDN + nowPlayingMovie?.posterPath} alt="" />
       )}
     </>
   );

@@ -26,7 +26,7 @@ if (!nowPlayingMovies) return null
         <VideoInfo {...nowPlayingMovie}/>
 
       {/* backgroundVideoContainer */}
-      <BackgroundVideo nowPlayingMovieId={nowPlayingMovie?.id} posterPath={nowPlayingMovie?.backdrop_path}/>
+      <BackgroundVideo {...nowPlayingMovie}/>
         
        
 

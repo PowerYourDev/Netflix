@@ -8,24 +8,22 @@ import {
 import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 
-import { doc,setDoc } from "firebase/firestore";
+import { doc, setDoc } from "firebase/firestore";
 
 //components imports
 import Header from "./Header";
 import { netflixBgimage } from "../constant";
-import { auth,db } from "../utilis/firebase";
+import { auth, db } from "../utilis/firebase";
 import { addUser } from "../redux/sliceReducers/userSlice";
-
+import { fetchMyListData } from "../redux/sliceReducers/myListSlice";
 
 const Login = () => {
   const { register, handleSubmit, formState, reset } = useForm();
   const { errors } = formState;
   const navigate = useNavigate();
-  const dispatch= useDispatch()
+  const dispatch = useDispatch();
 
-  const userData=useSelector((store)=>store?.userSlice)
-  console.log(userData)
-  
+  const userData = useSelector((store) => store?.userSlice);
 
   //------state varabiles----
   const [signIn, setSignIn] = useState(true);
@@ -42,13 +40,15 @@ const Login = () => {
           email,
           password
         );
-        if(isSignedIn?.user){
-           const {accessToken,email,photoURL}=isSignedIn?.user
-            
-            console.log(isSignedIn?.user)
-          dispatch(addUser({accessToken,email,photoURL}))
-          navigate("/movies-browse")
+        if (isSignedIn?.user) {
+          const { accessToken, email, photoURL } = isSignedIn?.user;
+
+          console.log(isSignedIn?.user);
+          dispatch(addUser({ accessToken, email, photoURL }));
+          navigate("/movies-browse");
+          dispatch(fetchMyListData(isSignedIn?.user));
         }
+
         console.log(isSignedIn.user);
       } catch (error) {
         const errorCode = error.code;
@@ -63,9 +63,9 @@ const Login = () => {
           email,
           password
         );
-        setDoc(doc(db,"users",email),{
-          myListItem:[]
-        })
+        setDoc(doc(db, "users", email), {
+          myListItem: [],
+        });
         console.log(isUserCreated.user);
       } catch (error) {
         const errorCode = error.code;
@@ -86,11 +86,11 @@ const Login = () => {
 
   //--useEffects--
 
-  useEffect(()=>{
-    if(userData){
-        navigate("/movies-browse")
+  useEffect(() => {
+    if (userData) {
+      navigate("/movies-browse");
     }
-  })
+  });
 
   return (
     <div

@@ -7,16 +7,18 @@ import {
   addNowPlayingBackGroundMovieLogo,
 } from "../redux/sliceReducers/movieSlice";
 
-const useFetchLogo = (id, BackgroundLogo) => {
+const useFetchLogo = (item, BackgroundLogo) => {
   const activeItem = useSelector((state)=>state?.userTab?.currentUserTab)
-  console.log(id, BackgroundLogo,"id, BackgroundLogo")
+  console.log(item, BackgroundLogo,"id, BackgroundLogo")
   const dispatch = useDispatch();
 
   let  Api_URL;
   if(activeItem==="/movies-browse" || activeItem==="/movies"){
-    Api_URL="https://api.themoviedb.org/3/movie/"+id +"/images?include_image_language=en"
-  }else if(activeItem==="/tv-shows"){
-    Api_URL="https://api.themoviedb.org/3/tv/"+ id +"/images"
+    Api_URL="https://api.themoviedb.org/3/movie/"+item?.id +"/images?include_image_language=en"
+  }else if(activeItem==="/tv-shows" || item?.media_type==="tv"){
+    Api_URL="https://api.themoviedb.org/3/tv/"+ item?.id +"/images"
+  }else{
+    Api_URL="https://api.themoviedb.org/3/movie/"+item?.id +"/images?include_image_language=en" 
   }
 
   const fetchImagePosters = async () => {

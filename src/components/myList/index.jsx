@@ -1,37 +1,35 @@
-import React, { useEffect, useState } from 'react'
-import { useSelector } from 'react-redux'
+import React, { useEffect, useState } from "react";
+import { useSelector } from "react-redux";
 
-
-import Header from '../Header'
-import Cardrow from "../MoviesBrowse/movieLists/cardRow"
-import { db } from '../../utilis/firebase'
-import { arrayRemove,doc,onSnapshot,updateDoc } from 'firebase/firestore'
+import Header from "../Header";
+import Cardrow from "../MoviesBrowse/movieLists/cardRow";
+import { db } from "../../utilis/firebase";
+import { arrayRemove, doc, onSnapshot, updateDoc } from "firebase/firestore";
 
 const MyList = () => {
-    const userData = useSelector((state) => state?.userSlice);
-    const [myListData,setMyListData]=useState([])
+  const userData = useSelector((state) => state?.userSlice);
+  const myListData = useSelector((state) => state?.MyList?.myListData);
 
-useEffect(()=>{
-    if(userData){
-        onSnapshot(doc(db,"users",`${userData.email}`),(doc)=>{
-            if(doc.data()){
-                setMyListData(doc.data().myListItem)
-            }
-        })
-    }
-},[])
-
+  console.log(myListData, "myListDatamyListData");
 
   return (
-    <div className='bg-black h-screen'>
+    <div className="bg-black h-screen">
+      <Header />
 
-     <Header />
-
-    <div className='pt-[70px]'>
-    <Cardrow title={"My List"} data={myListData} />
+      {myListData.length > 0 ? (
+        <div className="pt-[70px]">
+          <Cardrow title={"My List"} data={myListData} />
+        </div>
+      ) : (
+        //   <h1 className='text-white flex justify-center items-center h-screen'>Your list seems lonely without any movies. Let's change that!</h1>
+        <div className="flex justify-center items-center h-screen">
+          <p className="text-center text-gray-600 text-lg bg-gray-100 py-4 px-6 rounded-md shadow-md">
+            Your list seems lonely without any movies. Let's change that!
+          </p>
+        </div>
+      )}
     </div>
-  </div>
-  )
-}
+  );
+};
 
-export default MyList
+export default MyList;

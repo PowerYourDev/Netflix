@@ -7,17 +7,19 @@ import {
   addNowPlayingHoverMovieVideo,
 } from "../redux/sliceReducers/movieSlice";
 
-const useFetchMovieVideos = (nowPlayingMovieId, BackgroundVideo) => {
+const useFetchMovieVideos = (nowPlayingMovie, BackgroundVideo) => {
 
   const activeItem = useSelector((state)=>state?.userTab?.currentUserTab)
-  console.log(nowPlayingMovieId);
+  console.log(nowPlayingMovie?.id);
   const dispatch = useDispatch();
 
   let  Api_URL;
   if(activeItem==="/movies-browse" || activeItem==="/movies"){
-    Api_URL=`https://api.themoviedb.org/3/movie/${nowPlayingMovieId}/videos`
-  }else if(activeItem==="/tv-shows"){
-    Api_URL=`https://api.themoviedb.org/3/tv/${nowPlayingMovieId}/videos`
+    Api_URL=`https://api.themoviedb.org/3/movie/${nowPlayingMovie?.id}/videos`
+  }else if(activeItem==="/tv-shows" || nowPlayingMovie?.media_type==="tv"){
+    Api_URL=`https://api.themoviedb.org/3/tv/${nowPlayingMovie?.id}/videos`
+  }else{
+    Api_URL=`https://api.themoviedb.org/3/movie/${nowPlayingMovie?.id}/videos`
   }
 
   const fetchMovieVideos = async () => {
