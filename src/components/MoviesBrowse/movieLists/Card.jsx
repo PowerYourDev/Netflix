@@ -10,10 +10,14 @@ const Card = ({ item }) => {
     setActive(true);
   };
 
+  const handleClosePopUp=()=>{
+    setActive(false)
+  }
+
   return (
     <div>
       {active && (
-        <CardPopup item={item} active={active} setActive={setActive} />
+        <CardPopup item={item} active={active} setActive={setActive} handleClosePopUp={handleClosePopUp}/>
       )}
       <div className="h-[131px] w-[230px]">
         <img

@@ -5,12 +5,15 @@ import Header from "../Header";
 import Cardrow from "../MoviesBrowse/movieLists/cardRow";
 import { db } from "../../utilis/firebase";
 import { arrayRemove, doc, onSnapshot, updateDoc } from "firebase/firestore";
+import ShimmerUi from "../shimmerUi";
 
 const MyList = () => {
   const userData = useSelector((state) => state?.userSlice);
   const myListData = useSelector((state) => state?.MyList?.myListData);
 
   console.log(myListData, "myListDatamyListData");
+
+  if(!myListData) return <ShimmerUi/>
 
   return (
     <div className="bg-black h-screen">

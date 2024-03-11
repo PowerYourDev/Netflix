@@ -5,6 +5,7 @@ import { useSelector } from 'react-redux'
 import BackgroundVideo from './BackgroundVideo'
 import VideoInfo from './VideoInfo'
 import Header from "../../Header"
+import MovieLists from "../movieLists";
 
 
 
@@ -15,7 +16,7 @@ const CurrentmoviePlaying = () => {
   const nowPlayingMovie =nowPlayingMovies&&nowPlayingMovies[randomIndex]
 
 
-if (!nowPlayingMovies) return null
+ if (!nowPlayingMovies) return null
 
   return (
     <div>
@@ -28,7 +29,7 @@ if (!nowPlayingMovies) return null
       {/* backgroundVideoContainer */}
       <BackgroundVideo {...nowPlayingMovie}/>
         
-       
+      <MovieLists />
 
       
 

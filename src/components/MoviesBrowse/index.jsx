@@ -6,22 +6,23 @@ import { API_OPTIONS } from "../../constant";
 import { addNowPlayingMovies } from "../../redux/sliceReducers/movieSlice";
 import CurrentmoviePlaying from "./CurentMoviePlaying";
 import MovieLists from "./movieLists";
+import ShimmerUi from "../shimmerUi";
 
 
 const MoviesBrowse = () => {
   
   const dispatch = useDispatch();
+  const nowPlayingMovies=useSelector((state)=>state?.moviesSlice?.nowPlayingMovies)
+
   const activeItem = useSelector((state)=>state?.userTab?.currentUserTab)
 
 
   console.log(activeItem,"activeItem")
   let  Api_URL;
-  if(activeItem==="/movies-browse"){
+  if(activeItem==="/movies-browse" || activeItem==="/movies"){
     Api_URL="https://api.themoviedb.org/3/movie/now_playing?language=en-US&page=1"
   }else if(activeItem==="/tv-shows"){
     Api_URL="https://api.themoviedb.org/3/trending/tv/day?language=en-US"
-  }else if (activeItem==="/movies"){
-    Api_URL="https://api.themoviedb.org/3/movie/now_playing?language=en-US&page=1"
   }
 
   const fetchNowPlayingMovies = async () => {
@@ -44,17 +45,23 @@ const MoviesBrowse = () => {
 
  
 
-
+  // if (!nowPlayingMovies){
+  //   return(
+  //   
+  //   )
+  // }   
   return (
     <div>
       <Header />
       {/* video playing container */}
-
-      <CurrentmoviePlaying />
+  {
+    nowPlayingMovies ? <CurrentmoviePlaying  /> :<ShimmerUi/>
+  }
+      
 
       {/* movieListOfDiffGeneres */}
 
-      <MovieLists />
+      {/* <MovieLists /> */}
 
       {/* <movieLIsts/> */}
     </div>

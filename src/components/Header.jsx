@@ -34,9 +34,12 @@ const Header = () => {
   };
 
   const handleNavigate = (item) => {
-    dispatch(makingToIntialState());
-    dispatch(addCurrentUserTab(item));
-    navigate(item);
+    if(item !== location?.pathname) {
+      dispatch(makingToIntialState());
+      dispatch(addCurrentUserTab(item));
+      navigate(item);
+    }
+   
   };
 
   useEffect(() => {

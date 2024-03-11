@@ -20,7 +20,7 @@ import { convertMinutesToHoursAndMinutes } from "../common/index";
 import ExpandPopup from "./ExpandPopup";
 import { fetchMyListData } from "../../redux/sliceReducers/myListSlice";
 
-const CardPopup = ({ active, item, setActive }) => {
+const CardPopup = ({ active, item, setActive,handleClosePopUp  }) => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const userData = useSelector((state) => state?.userSlice);
@@ -152,6 +152,13 @@ const CardPopup = ({ active, item, setActive }) => {
               alt=""
               className="w-[35%] h-[25%] absolute left-4 bottom-3"
             />
+
+<div
+          className="absolute top-[14%] right-[4%] bg-[#181818] p-[5px] inline-block rounded-full  mx-[0.25em] cursor-pointer"
+          onClick={handleClosePopUp}
+        >
+          <img src={crossIcon} alt="crossIcon" />
+        </div>
           </div>
           <div className="p-4 bg-[#181818] ">
             <div className="flex justify-between ">
