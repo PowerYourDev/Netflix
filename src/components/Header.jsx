@@ -9,16 +9,20 @@ import { removeUser } from "../redux/sliceReducers/userSlice";
 import { profileIcon } from "../constant";
 import { makingToIntialState } from "../redux/sliceReducers/movieSlice";
 import { addCurrentUserTab } from "../redux/sliceReducers/userTabSlice";
+import ProfileDropDown from "../utilis/common/ProfileDropDown";
+import search from "../Assets/svg/search.svg"
 
 const Header = () => {
   const userData = useSelector((state) => state?.userSlice);
   const activeItem = useSelector((state) => state?.userTab?.currentUserTab);
+
 
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const location = useLocation();
 
   const [headerEffect, setHeaderEffect] = useState(false);
+  const [profileDropDown,setProfileDropDown]=useState(false)
 
   const handleHeadeEffect = () => {
     if (window.scrollY > 70) {
@@ -31,6 +35,19 @@ const Header = () => {
   const handleLogout = () => {
     dispatch(removeUser());
     navigate("/");
+  };
+
+  let timeoutId;
+
+  const handleProfileDropDownOnEnter = () => {
+    setProfileDropDown(true);
+    clearTimeout(timeoutId); 
+  };
+
+  const handleProfileDropDownOnLeave = () => {
+    timeoutId = setTimeout(() => {
+      setProfileDropDown(false);
+    }, 300); 
   };
 
   const handleNavigate = (item) => {
@@ -48,10 +65,16 @@ const Header = () => {
   }, []);
 
   useEffect(() => {
-    // Update active item in the header based on current location
+   
     dispatch(makingToIntialState());
     dispatch(addCurrentUserTab(location.pathname));
   }, [location.pathname]);
+
+  useEffect(() => {
+    return () => {
+      clearTimeout(timeoutId); 
+    };
+  }, []);
 
   return (
     <>
@@ -109,8 +132,14 @@ const Header = () => {
           </div>
 
           <div>
-            <ul className="flex gap-5 text-[#e5e5e5]">
-              <input type="text" />
+            <ul className="flex gap-5 text-[#e5e5e5] items-center">
+                 <li className="">
+                  <div className="border-[0.5px] border-white bg-black  flex py-[6px] px-2 items-center">
+                    <img src={search} alt="" className="pr-2" />
+                  <input type="text" className="border-none outline-none bg-transparent" placeholder="search for time waste"/>
+                  </div>
+               
+                 </li>
               {/* tv shows Top rated children */}
               <li
                 className={`${
@@ -119,14 +148,22 @@ const Header = () => {
               >
                 Children
               </li>
-              <img src={profileIcon} alt="" srcset="" />
+             <li onMouseEnter={handleProfileDropDownOnEnter} onMouseLeave={handleProfileDropDownOnLeave} className="relative">
+             <img src={profileIcon} alt="" />
+
+             {profileDropDown&&
+              <ProfileDropDown handleLogout={handleLogout} profileDropDown={profileDropDown}/>
+            }
+             </li>
+
+           
             </ul>
           </div>
         </div>
       ) : (
         <div className="bg-gradient-to-b from-black absolute w-full">
           <img src={netflixLogo} alt="" className="w-52 ml-[9%]" />
-          <button onClick={handleLogout}>logout</button>
+          {/* <button onClick={handleLogout}>logout</button> */}
         </div>
       )}
     </>

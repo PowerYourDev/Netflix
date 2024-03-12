@@ -193,7 +193,7 @@ const ExpandPopup = ({
       </div>
 
       <div className="px-[3em]">
-        <SimilarMoviesPopUp />
+        <SimilarMoviesPopUp handleRemoveListItem={handleRemoveListItem} handleSetListItem={handleSetListItem} />
       </div>
     </div>
   );

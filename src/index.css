@@ -73,3 +73,9 @@
       }
     }
   }
+
+  @layer utilities {
+    .delay-2000 {
+      transition-delay: 2s;
+    }
+  }

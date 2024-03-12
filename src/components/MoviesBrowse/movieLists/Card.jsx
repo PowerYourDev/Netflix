@@ -19,10 +19,10 @@ const Card = ({ item }) => {
       {active && (
         <CardPopup item={item} active={active} setActive={setActive} handleClosePopUp={handleClosePopUp}/>
       )}
-      <div className="h-[131px] w-[230px]">
+      <div className="h-[141px] w-[230px]">
         <img
-          src={POSTER_CDN + item.poster_path}
-          className="w-full h-full"
+          src={POSTER_CDN + item?.poster_path}
+          className="w-full h-full object-cover"
           onClick={posterPopupHandler}
         />
       </div>
