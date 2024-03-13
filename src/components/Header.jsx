@@ -11,6 +11,7 @@ import { makingToIntialState } from "../redux/sliceReducers/movieSlice";
 import { addCurrentUserTab } from "../redux/sliceReducers/userTabSlice";
 import ProfileDropDown from "../utilis/common/ProfileDropDown";
 import search from "../Assets/svg/search.svg"
+import MultiLangselect from "../utilis/common/multiLangselect";
 
 const Header = () => {
   const userData = useSelector((state) => state?.userSlice);
@@ -161,9 +162,15 @@ const Header = () => {
           </div>
         </div>
       ) : (
+
+        <div> 
         <div className="bg-gradient-to-b from-black absolute w-full">
           <img src={netflixLogo} alt="" className="w-52 ml-[9%]" />
           {/* <button onClick={handleLogout}>logout</button> */}
+        
+        </div>
+
+        <MultiLangselect header="header"/>
         </div>
       )}
     </>

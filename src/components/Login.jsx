@@ -17,8 +17,10 @@ import { netflixBgimage } from "../constant";
 import { auth, db } from "../utilis/firebase";
 import { addUser } from "../redux/sliceReducers/userSlice";
 import { fetchMyListData } from "../redux/sliceReducers/myListSlice";
+import { useTranslation } from "react-i18next";
 
 const Login = () => {
+ const {t} =useTranslation()
   const { register, handleSubmit, formState, reset } = useForm();
   const { errors } = formState;
   const navigate = useNavigate();
@@ -122,7 +124,7 @@ const Login = () => {
       >
         <div className="sm:w-1/4 bg-[rgba(0,0,0,0.7)] flex flex-col  px-[4%] py-[48px]">
           <h1 className="font-bold text-[2rem] mb-4">
-            {signIn ? "sign In" : "sign Up"}
+            {signIn ? t("signIn"): t("sign Up")}
           </h1>
           {!signIn && (
             <input

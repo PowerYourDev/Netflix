@@ -8,6 +8,7 @@ import store from "./redux/store";
 import { PersistGate } from "redux-persist/integration/react";
 import { persistStore } from "redux-persist";
 import 'react-toastify/dist/ReactToastify.css';
+import  './i18n.js'
 
 let persistor = persistStore(store);
 
