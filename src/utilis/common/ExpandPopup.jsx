@@ -24,10 +24,6 @@ const ExpandPopup = ({
 
   const MylistMovies = useSelector((state) => state?.MyList?.myListData);
 
-
-    
-  
-
   const videoPlayHandler = (id) => {
     navigate("/movie-playing/" + id);
   };
@@ -56,7 +52,7 @@ const ExpandPopup = ({
         )}
         <div
           className="absolute top-[8%] right-[4%] bg-[#181818] p-[8px] inline-block rounded-full  mx-[0.25em] cursor-pointer"
-          onClick={()=>CloseExpandPopUp()}
+          onClick={() => CloseExpandPopUp()}
         >
           <img src={crossIcon} alt="crossIcon" />
         </div>
@@ -100,8 +96,6 @@ const ExpandPopup = ({
                   <img src={plusIcon} alt="plusIcon" />
                 </div>
               )}
-
-             
             </div>
 
             <div>
@@ -121,7 +115,9 @@ const ExpandPopup = ({
                 {movieDetails?.vote_average?.toFixed(2)}% Rating
               </h3>
 
-              <h3 className="text-white">{extractYear(movieDetails?.release_date)}</h3>
+              <h3 className="text-white">
+                {extractYear(movieDetails?.release_date)}
+              </h3>
 
               <h3 className="text-[13px] font-medium text-white">
                 {convertMinutesToHoursAndMinutes(movieDetails?.runtime)}
@@ -158,7 +154,7 @@ const ExpandPopup = ({
           </div>
         </div>
         <div className="col-span-4">
-        <div className="text-white my-[0.5em]">
+          <div className="text-white my-[0.5em]">
             <div className="flex flex-wrap">
               <span className="text-[#777]">Cast: </span>
               {movieDetails?.genres?.map((genre, index) => {
@@ -193,7 +189,10 @@ const ExpandPopup = ({
       </div>
 
       <div className="px-[3em]">
-        <SimilarMoviesPopUp handleRemoveListItem={handleRemoveListItem} handleSetListItem={handleSetListItem} />
+        <SimilarMoviesPopUp
+          handleRemoveListItem={handleRemoveListItem}
+          handleSetListItem={handleSetListItem}
+        />
       </div>
     </div>
   );
