@@ -24,9 +24,9 @@ const ExpandPopup = ({
 
   const MylistMovies = useSelector((state) => state?.MyList?.myListData);
 
-  const handleCloseExpandPopUp = () => {
-    CloseExpandPopUp();
-  };
+
+    
+  
 
   const videoPlayHandler = (id) => {
     navigate("/movie-playing/" + id);
@@ -37,7 +37,7 @@ const ExpandPopup = ({
   return (
     <div className="w-3/5 h-screen bg-black fixed top-[35px] left-0 right-0  mx-auto z-30 rounded-2xl  overflow-y-scroll no-scrollbar ">
       <div className="relative">
-        {hoverMovie.key ? (
+        {hoverMovie?.key ? (
           <div className="w-full h-full bg-gradient-to-t from-[#181818] to-transparent bg-opacity-100">
             <iframe
               onClick={() => videoPlayHandler(item?.id)}
@@ -50,13 +50,13 @@ const ExpandPopup = ({
         ) : (
           <img
             src={POSTER_CDN + item.poster_path}
-            className="w-full h-full"
+            className="w-full h-full aspect-video"
             alt="posterPopup"
           />
         )}
         <div
           className="absolute top-[8%] right-[4%] bg-[#181818] p-[8px] inline-block rounded-full  mx-[0.25em] cursor-pointer"
-          onClick={handleCloseExpandPopUp}
+          onClick={()=>CloseExpandPopUp()}
         >
           <img src={crossIcon} alt="crossIcon" />
         </div>

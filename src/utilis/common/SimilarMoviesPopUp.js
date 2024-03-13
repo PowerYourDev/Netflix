@@ -27,7 +27,7 @@ const SimilarMoviesPopUp = ({handleRemoveListItem,handleSetListItem}) => {
                <div className="w-full h-[170px] ">
                <img
                   src={POSTER_CDN + movie?.poster_path}
-                  alt=""
+                  alt={movie?.original_name || movie?.original_title }
                   srcset=""
                   className="object-cover h-full w-full"
                 />

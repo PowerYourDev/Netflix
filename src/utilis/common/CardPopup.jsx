@@ -58,7 +58,8 @@ const CardPopup = ({ active, item, setActive,handleClosePopUp  }) => {
 
   const CloseExpandPopUp = () => {
     setExpandPopUp(false);
-    setActive(false);
+    // setActive(false);
+    handleClosePopUp()
   };
 
   const handleSetListItem = async (item) => {
@@ -143,7 +144,7 @@ const CardPopup = ({ active, item, setActive,handleClosePopUp  }) => {
             ) : (
               <img
                 src={POSTER_CDN + item.poster_path}
-                className="w-full h-full"
+                className="w-full h-full aspect-video"
                 alt="posterPopup"
               />
             )}

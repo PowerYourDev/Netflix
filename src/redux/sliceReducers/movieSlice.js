@@ -4,6 +4,9 @@ const moviesSlice = createSlice({
   name: "moviesSlice",
   initialState: {
     nowPlayingMovies: null,
+    popularMovies:null,
+    upComingMovies:null,
+
     nowPlayingBackGroundMovieVideo: {
       playingBackGroundMovieVideo:null,
       playingBackGroundMovieLogo:null
@@ -13,6 +16,7 @@ const moviesSlice = createSlice({
       playingHoverMovieLogo:null,
       playingHoverMovieDetails:null,
       playingHoverSimilarMovies:null,
+
     },
   },
   reducers: {
@@ -37,6 +41,28 @@ const moviesSlice = createSlice({
     addNowPlayingHoverSimilarMovies: (state, action) => {
       state.nowPlayingHoverMovieVideo.playingHoverSimilarMovies = action.payload;
     },
+
+
+
+    //popular movies
+    addPopularMovies: (state, action) => {
+      state.popularMovies = action.payload;
+    },
+
+    //upComing movies
+    
+    addUpComingMovies: (state, action) => {
+      state.upComingMovies = action.payload;
+    },
+
+    makingHoverToIntialState:(state)=>{
+     state.nowPlayingHoverMovieVideo.playingHoverMovieVideo=null;
+     state.nowPlayingHoverMovieVideo.playingHoverMovieLogo=null;
+     state.nowPlayingHoverMovieVideo.playingHoverMovieDetails=null;
+     state.nowPlayingHoverMovieVideo.playingHoverSimilarMovies=null;
+
+    },
+
     makingToIntialState: (state, action) => {
       state.nowPlayingMovies = null;
       state.nowPlayingBackGroundMovieVideo.playingBackGroundMovieLogo = null;
@@ -55,4 +81,8 @@ export const {
   addNowPlayingHoverMovieDetails,
   addNowPlayingHoverSimilarMovies,
   makingToIntialState,
+  makingHoverToIntialState,
+
+  addPopularMovies,
+  addUpComingMovies,
 } = moviesSlice.actions;
