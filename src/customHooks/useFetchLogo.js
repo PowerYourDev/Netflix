@@ -9,7 +9,7 @@ import {
 
 const useFetchLogo = (item, BackgroundLogo) => {
   const activeItem = useSelector((state)=>state?.userTab?.currentUserTab)
-  console.log(item, BackgroundLogo,"id, BackgroundLogo")
+
   const dispatch = useDispatch();
 
   let  Api_URL;
@@ -29,7 +29,7 @@ const useFetchLogo = (item, BackgroundLogo) => {
         API_OPTIONS
       );
       const movieLogosData = await movieLogosJsonData.json();
-      console.log(movieLogosData);
+  
       const curentMovieLogo =
         movieLogosData.length === 0
           ? null

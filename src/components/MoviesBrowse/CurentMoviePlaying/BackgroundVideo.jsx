@@ -9,7 +9,7 @@ import useFetchMovieVideos from "../../../customHooks/useFetchMovieVideos";
 const BackgroundVideo = (nowPlayingMovie) => {
   const video= useSelector((state)=>state.moviesSlice?.nowPlayingBackGroundMovieVideo?.playingBackGroundMovieVideo)
  
-  console.log(video, "video");
+  console.log(nowPlayingMovie,"nowplayinng,ovie")
 
   useFetchMovieVideos(nowPlayingMovie,"BackgroundVideo")
   // if (!video) return null;

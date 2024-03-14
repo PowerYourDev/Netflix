@@ -11,7 +11,7 @@ const MyList = () => {
   const userData = useSelector((state) => state?.userSlice);
   const myListData = useSelector((state) => state?.MyList?.myListData);
 
-  console.log(myListData, "myListDatamyListData");
+ 
 
   if(!myListData) return <ShimmerUi/>
 

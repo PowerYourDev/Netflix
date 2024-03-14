@@ -20,7 +20,7 @@ import { convertMinutesToHoursAndMinutes } from "../common/index";
 import ExpandPopup from "./ExpandPopup";
 import { fetchMyListData } from "../../redux/sliceReducers/myListSlice";
 
-const CardPopup = ({ active, item, setActive,handleClosePopUp  }) => {
+const CardPopup = ({ active, item, handleClosePopUp  }) => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const userData = useSelector((state) => state?.userSlice);
@@ -58,7 +58,7 @@ const CardPopup = ({ active, item, setActive,handleClosePopUp  }) => {
 
   const CloseExpandPopUp = () => {
     setExpandPopUp(false);
-    // setActive(false);
+    
     handleClosePopUp()
   };
 
@@ -89,7 +89,7 @@ const CardPopup = ({ active, item, setActive,handleClosePopUp  }) => {
       });
 
       dispatch(fetchMyListData(userData));
-      // console.log(removedItem)
+    
       toast.success("Movie removed  from My List");
     } catch (e) {
       console.error("Error removing document: ", e);
@@ -143,7 +143,7 @@ const CardPopup = ({ active, item, setActive,handleClosePopUp  }) => {
               </div>
             ) : (
               <img
-                src={POSTER_CDN + item.poster_path}
+                src={POSTER_CDN + item?.poster_path}
                 className="w-full h-full aspect-video"
                 alt="posterPopup"
               />

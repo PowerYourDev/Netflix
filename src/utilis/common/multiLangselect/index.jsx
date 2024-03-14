@@ -16,7 +16,7 @@ const MultiLangselect = ({header}) => {
     ]
 
     const handleLangChange=(e)=>{
-        console.log(e.target.value)
+     
        i18n.changeLanguage(e.target.value)
     }
 

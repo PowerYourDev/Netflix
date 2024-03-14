@@ -15,7 +15,6 @@ const SimilarMoviesPopUp = ({handleRemoveListItem,handleSetListItem}) => {
 
   const MylistMovies = useSelector((state) => state?.MyList?.myListData);
 
-  console.log(similarMovieData);
   return (
     <div className="text-white mt-[48px]">
       <h1 className="mb-[20px] font-medium text-[24px]">More Like This</h1>

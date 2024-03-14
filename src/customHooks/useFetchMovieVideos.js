@@ -10,7 +10,7 @@ import {
 const useFetchMovieVideos = (nowPlayingMovie, BackgroundVideo) => {
 
   const activeItem = useSelector((state)=>state?.userTab?.currentUserTab)
-  console.log(nowPlayingMovie?.id);
+ 
   const dispatch = useDispatch();
 
   let  Api_URL;

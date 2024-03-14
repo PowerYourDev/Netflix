@@ -23,7 +23,7 @@ const MovieRow = ({ title, data }) => {
   const onMouseLeave = (e) => {
     setActive(false);
     // setVideo(false);
-    console.log(e);
+  
   };
 
   const ref = useRef(null);

@@ -7,22 +7,45 @@ import playIcon from "../../../Assets/svg/playIcon.svg";
 import moreInfoIcon from "../../../Assets/svg/moreInfoIcon.svg";
 import useFetchLogo from "../../../customHooks/useFetchLogo";
 import { POSTER_CDN } from "../../../constant";
+import CardPopup from "../../../utilis/common/CardPopup";
 
 const VideoInfo = (nowPlayingMovie) => {
   const navigate = useNavigate();
+  
+const [popUpActive,setPopUpActive]=useState(false)
+
+// const backgroundMovieData= useSelector((state)=>state?.moviesSlice?.nowPlayingBackGroundMovieVideo?.playingBackGroundMovieVideo)
+console.log(nowPlayingMovie,"nowplayinng,ovie")
+
   const logo = useSelector(
     (state) =>
       state.moviesSlice.nowPlayingBackGroundMovieVideo
         ?.playingBackGroundMovieLogo
   );
 
-  useFetchLogo(nowPlayingMovie, "BackgroundLogo");
+
 
   const handlePlay = () => {
     navigate("/movie-playing/banner-movie");
   };
 
+  const handleMoreInfo=()=>{
+    setPopUpActive(true)
+  }
+
+  const handleClosePopUp=()=>{
+    setPopUpActive(false)
+  }
+
+
+  useFetchLogo(nowPlayingMovie, "BackgroundLogo");
+
   return (
+   <>
+   {
+     popUpActive && <CardPopup item={nowPlayingMovie} active={popUpActive} setActive={setPopUpActive} handleClosePopUp={handleClosePopUp}/>
+
+   }
     <div className="w-1/3 absolute bottom-[25%] left-[4%] ">
       <div className="mb-[1.2rem] flex justify-center">
         {logo ? (
@@ -49,7 +72,7 @@ const VideoInfo = (nowPlayingMovie) => {
             Play
           </button>
         </div>
-        <div className="flex gap-[0.5rem] bg-[#6D6D6EB3] text-[#fff] pl-[2rem] pr-[2.5rem] rounded py-[0.5rem] cursor-pointer">
+        <div className="flex gap-[0.5rem] bg-[#6D6D6EB3] text-[#fff] pl-[2rem] pr-[2.5rem] rounded py-[0.5rem] cursor-pointer" onClick={handleMoreInfo}>
           <img src={moreInfoIcon} />
           <button className="text-[1.4rem] font-semibold leading-[2.4rem]">
             More Info
@@ -57,6 +80,7 @@ const VideoInfo = (nowPlayingMovie) => {
         </div>
       </div>
     </div>
+   </>
   );
 };
 

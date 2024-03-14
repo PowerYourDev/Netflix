@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState,useEffect } from 'react'
 import { useSelector } from 'react-redux'
 
 
@@ -11,12 +11,18 @@ import MovieLists from "../movieLists";
 
 const CurrentmoviePlaying = () => {
   const nowPlayingMovies=useSelector((state)=>state?.moviesSlice?.nowPlayingMovies)
-  const randomIndex = nowPlayingMovies ? Math.floor(Math.random() * nowPlayingMovies.length) : 0;
+
   
-  const nowPlayingMovie =nowPlayingMovies&&nowPlayingMovies[randomIndex]
+  const [nowPlayingMovie,setNowPlayingMovie]=useState(null)
+
+  useEffect(()=>{
+    const randomIndex = nowPlayingMovies ? Math.floor(Math.random() * nowPlayingMovies.length) : 0;
+    const nowPlayingMovie = nowPlayingMovies&&nowPlayingMovies[randomIndex]
+     setNowPlayingMovie(nowPlayingMovie)
+  },[])
 
 
- if (!nowPlayingMovies) return null
+ if (!nowPlayingMovie) return null
 
   return (
     <div>

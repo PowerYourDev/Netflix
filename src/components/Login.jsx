@@ -80,7 +80,7 @@ const Login = () => {
           toast.success("Account created successfully. Please sign in.!");
           setSignIn(false);
         }
-        console.log(isUserCreated);
+     
       } catch (error) {
         if (error?.code === "auth/email-already-in-use") {
           toast.error("Email already exist!");

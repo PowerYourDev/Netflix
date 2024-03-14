@@ -39,7 +39,7 @@ const myListSlice = createSlice({
       //         state.status = 'loading';
       //     })
       .addCase(fetchMyListData.fulfilled, (state, action) => {
-        console.log(action.payload);
+ 
         state.status = "succeeded";
         state.myListData = action.payload;
       });
