@@ -99,6 +99,7 @@ const CardPopup = ({ active, item, handleClosePopUp  }) => {
 
   return (
     <div>
+      <div className={active && "fixed top-0 left-0 w-full h-full bg-[#000] bg-opacity-[0.7] z-20 overflow-hidden"}/>
       {expandPopUp && (
         <ExpandPopup
           hoverMovie={hoverMovie}
@@ -111,14 +112,9 @@ const CardPopup = ({ active, item, handleClosePopUp  }) => {
         />
       )}
       {/* bg-opacity-[0.7] */}
-      <div
-        className={
-          expandPopUp &&
-          "fixed top-0 left-0 w-full h-full bg-[#000] bg-opacity-[0.7] z-1"
-        }
-      >
+     
         <div
-          className="bg-black fixed top-0 left-0  right-0 bottom-0 m-auto  w-1/5  h-1/5 z-20"
+          className="bg-black fixed top-0 left-0  right-0 bottom-0 m-auto  w-1/5  h-1/5 z-30"
           style={{
             animationName: active ? "card" : "card-exit",
             animationDuration: "0.6s",
@@ -238,7 +234,7 @@ const CardPopup = ({ active, item, handleClosePopUp  }) => {
           </div>
         </div>
       </div>
-    </div>
+
   );
 };
 

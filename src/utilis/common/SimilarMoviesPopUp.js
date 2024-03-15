@@ -1,5 +1,5 @@
 import React from "react";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 
 import { POSTER_CDN } from "../../constant";
 import plusIcon from "../../Assets/svg/plusIcon.svg";
@@ -8,6 +8,8 @@ import { extractYear } from "./index";
 import crossIcon from "../../Assets/svg/crossIcon.svg";
 
 const SimilarMoviesPopUp = ({handleRemoveListItem,handleSetListItem}) => {
+ const dispatch=useDispatch()
+
   const similarMovieData = useSelector(
     (state) =>
       state.moviesSlice?.nowPlayingHoverMovieVideo?.playingHoverSimilarMovies
@@ -15,13 +17,19 @@ const SimilarMoviesPopUp = ({handleRemoveListItem,handleSetListItem}) => {
 
   const MylistMovies = useSelector((state) => state?.MyList?.myListData);
 
+  const handleSimilarMovie=()=>{
+    
+  }
+
   return (
     <div className="text-white mt-[48px]">
       <h1 className="mb-[20px] font-medium text-[24px]">More Like This</h1>
       <div className="grid grid-cols-3 gap-[1em] ">
         {similarMovieData?.map((movie) => {
           return (
-            <div key={movie.id} className="flex flex-col">
+            <div key={movie.id} className="flex flex-col" 
+            // onClick={handleSimilarMovie}
+            >
            
                <div className="w-full h-[170px] ">
                <img

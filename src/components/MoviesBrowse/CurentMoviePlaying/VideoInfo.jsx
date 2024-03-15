@@ -46,7 +46,7 @@ console.log(nowPlayingMovie,"nowplayinng,ovie")
      popUpActive && <CardPopup item={nowPlayingMovie} active={popUpActive} setActive={setPopUpActive} handleClosePopUp={handleClosePopUp}/>
 
    }
-    <div className="w-1/3 absolute bottom-[25%] left-[4%] ">
+    <div className="w-1/3 absolute bottom-[25%] left-[4%] z-10">
       <div className="mb-[1.2rem] flex justify-center">
         {logo ? (
           <img className="w-2/3" src={POSTER_CDN + logo} alt="" />

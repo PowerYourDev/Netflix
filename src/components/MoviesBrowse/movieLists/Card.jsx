@@ -23,7 +23,7 @@ const Card = ({ item }) => {
   return (
 
     <div>
-      <div className={active && "fixed top-0 left-0 w-full h-full bg-[#000] bg-opacity-[0.7] z-1 overflow-hidden"}/>
+      {/* <div className={active && "fixed top-0 left-0 w-full h-full bg-[#000] bg-opacity-[0.7] z-1 overflow-hidden"}/> */}
       {active && (
         <CardPopup item={item} active={active} setActive={setActive} handleClosePopUp={handleClosePopUp}/>
       )}
