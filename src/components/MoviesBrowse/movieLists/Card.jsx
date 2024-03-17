@@ -7,6 +7,8 @@ import { makingHoverToIntialState } from "../../../redux/sliceReducers/movieSlic
 
 
 const Card = ({ item }) => {
+  // const apiUrl = process.env.REACT_APP_API_URL;
+  // console.log(apiUrl)
   const dispatch=useDispatch()
   const [active, setActive] = useState(false);
 
@@ -30,7 +32,7 @@ const Card = ({ item }) => {
     
 
      
-      <div className="h-[141px] w-[230px]">
+      <div className="h-[141px] w-[230px] cursor-pointer">
         <img
           src={POSTER_CDN + item?.poster_path}
           className="w-full h-full object-cover"

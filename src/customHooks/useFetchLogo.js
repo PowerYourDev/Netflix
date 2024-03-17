@@ -7,7 +7,7 @@ import {
   addNowPlayingBackGroundMovieLogo,
 } from "../redux/sliceReducers/movieSlice";
 
-const useFetchLogo = (item, BackgroundLogo) => {
+const useFetchLogo = (item, action) => {
   const activeItem = useSelector((state)=>state?.userTab?.currentUserTab)
 
   const dispatch = useDispatch();
@@ -35,9 +35,9 @@ const useFetchLogo = (item, BackgroundLogo) => {
           ? null
           : movieLogosData?.logos[0]?.file_path;
 
-      BackgroundLogo === "BackgroundLogo"
-        ? dispatch(addNowPlayingBackGroundMovieLogo(curentMovieLogo))
-        : dispatch(addNowPlayingHoverMovieLogo(curentMovieLogo));
+     
+         dispatch(action(curentMovieLogo))
+        
     } catch (error) {
       console.log(error);
     }
@@ -45,7 +45,7 @@ const useFetchLogo = (item, BackgroundLogo) => {
 
   useEffect(() => {
     fetchImagePosters();
-  }, [activeItem]);
+  }, [activeItem,item]);
 };
 
 export default useFetchLogo;

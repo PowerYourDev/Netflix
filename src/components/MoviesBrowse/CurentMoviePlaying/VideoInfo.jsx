@@ -9,6 +9,10 @@ import useFetchLogo from "../../../customHooks/useFetchLogo";
 import { POSTER_CDN } from "../../../constant";
 import CardPopup from "../../../utilis/common/CardPopup";
 
+import { addNowPlayingBackGroundMovieLogo } from "../../../redux/sliceReducers/movieSlice";
+import { addNowPlayingTvShowsLogo } from "../../../redux/sliceReducers/movieSlice";
+
+
 const VideoInfo = (nowPlayingMovie) => {
   const navigate = useNavigate();
   
@@ -17,14 +21,22 @@ const [popUpActive,setPopUpActive]=useState(false)
 // const backgroundMovieData= useSelector((state)=>state?.moviesSlice?.nowPlayingBackGroundMovieVideo?.playingBackGroundMovieVideo)
 console.log(nowPlayingMovie,"nowplayinng,ovie")
 
-  const logo = useSelector(
+  const movieLogo = useSelector(
     (state) =>
       state.moviesSlice.nowPlayingBackGroundMovieVideo
         ?.playingBackGroundMovieLogo
   );
 
+  const tvShowsLogo=useSelector((state)=>state?.moviesSlice?.nowPlayingBackGroundTvShowsVideo?.playingBackGroundTvShowsLogo)
+  const activeItem = useSelector((state)=>state?.userTab?.currentUserTab)
 
 
+  
+
+
+  const logo = activeItem==="/movies-browse" || activeItem === "/movies"?movieLogo:tvShowsLogo
+
+  const NowPlayingMovieLogoAction = activeItem==="/movies-browse" || activeItem === "/movies"?addNowPlayingBackGroundMovieLogo:addNowPlayingTvShowsLogo
   const handlePlay = () => {
     navigate("/movie-playing/banner-movie");
   };
@@ -38,7 +50,7 @@ console.log(nowPlayingMovie,"nowplayinng,ovie")
   }
 
 
-  useFetchLogo(nowPlayingMovie, "BackgroundLogo");
+  useFetchLogo(nowPlayingMovie,NowPlayingMovieLogoAction );
 
   return (
    <>

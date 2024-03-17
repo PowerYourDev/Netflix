@@ -11,6 +11,9 @@ import FullVideo from "./components/FullVideo"
 import MyList from  "./components/myList"
 
 import MoviesBrowse from './components/MoviesBrowse'
+import HomePage from './pages/Home';
+import TvShows from './pages/TvShows';
+import NewPopular from './pages/NewPopular';
 // import Tvsowh from './pages/TvShows'
 // import Home from './pages/Home'
 
@@ -24,15 +27,15 @@ const appRouter=createBrowserRouter([
     children:[
       {
         path:"/movies-browse",
-        element:<MoviesBrowse/>,
+        element:<HomePage/>,
       },
       {
         path:"/tv-shows",
-        element:<MoviesBrowse/>,
+        element:<TvShows/>,
       },
       {
         path:"/movies",
-        element:<MoviesBrowse/>,
+        element:<HomePage/>,
       },
       {
         path:"/my-lists",
@@ -40,7 +43,7 @@ const appRouter=createBrowserRouter([
       },
       {
         path:"/new-popular",
-        element:<MoviesBrowse/>,
+        element:<NewPopular/>,
       },
       {
         path:"/movie-playing/:id",

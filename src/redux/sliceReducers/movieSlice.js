@@ -7,6 +7,16 @@ const moviesSlice = createSlice({
     popularMovies:null,
     upComingMovies:null,
 
+    nowPlayingTvShows: null,
+    popularTvShows:null,
+    upComingTvShows:null,
+
+    
+    nowPlayingBackGroundTvShowsVideo: {
+      playingBackGroundTvShowsVideo:null,
+      playingBackGroundTvShowsLogo:null
+    },
+
     nowPlayingBackGroundMovieVideo: {
       playingBackGroundMovieVideo:null,
       playingBackGroundMovieLogo:null
@@ -18,6 +28,9 @@ const moviesSlice = createSlice({
       playingHoverSimilarMovies:null,
 
     },
+
+   
+
   },
   reducers: {
     addNowPlayingMovies: (state, action) => {
@@ -44,6 +57,9 @@ const moviesSlice = createSlice({
 
 
 
+
+
+
     //popular movies
     addPopularMovies: (state, action) => {
       state.popularMovies = action.payload;
@@ -53,6 +69,19 @@ const moviesSlice = createSlice({
     
     addUpComingMovies: (state, action) => {
       state.upComingMovies = action.payload;
+    },
+
+
+    addUpComingTvShows: (state, action) => {
+      state.upComingTvShows = action.payload;
+    },
+     
+    addPopularTvShows: (state, action) => {
+      state.popularTvShows = action.payload;
+    },
+
+    addNowPlayingTvShows: (state, action) => {
+      state.nowPlayingTvShows = action.payload;
     },
 
     makingHoverToIntialState:(state)=>{
@@ -68,6 +97,27 @@ const moviesSlice = createSlice({
       state.nowPlayingBackGroundMovieVideo.playingBackGroundMovieLogo = null;
       state.nowPlayingBackGroundMovieVideo.playingBackGroundMovieVideo = null;
     },
+
+
+    //background tv shows
+    addNowPlayingTvShowsVideo:(state,action)=>{
+      state.nowPlayingBackGroundTvShowsVideo.playingBackGroundTvShowsVideo=action.payload
+    },
+
+    addNowPlayingTvShowsLogo:(state,action)=>{
+      state.nowPlayingBackGroundTvShowsVideo.playingBackGroundTvShowsLogo=action.payload
+    },
+
+    makingToIntialStateBackgroundTvShows:(state,action)=>{
+      state.nowPlayingBackGroundTvShowsVideo.playingBackGroundTvShowsVideo=null
+      state.nowPlayingBackGroundTvShowsVideo.playingBackGroundTvShowsLogo=null
+    },
+
+    makingToIntialStateBackgroundMovies:(state,action)=>{
+      state.nowPlayingBackGroundMovieVideo.playingBackGroundMovieVideo=null
+      state.nowPlayingBackGroundMovieVideo.playingBackGroundMovieLogo=null
+    }
+
   },
 });
 
@@ -85,4 +135,18 @@ export const {
 
   addPopularMovies,
   addUpComingMovies,
+
+
+
+  addUpComingTvShows,
+  addPopularTvShows,
+  addNowPlayingTvShows,
+
+
+  addNowPlayingTvShowsVideo,
+  addNowPlayingTvShowsLogo,
+
+  makingToIntialStateBackgroundMovies,
+  makingToIntialStateBackgroundTvShows
+  
 } = moviesSlice.actions;

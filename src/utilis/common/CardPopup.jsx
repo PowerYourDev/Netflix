@@ -19,6 +19,8 @@ import useFetchMovieDetaills from "../../customHooks/useFetchMovieDetaills";
 import { convertMinutesToHoursAndMinutes } from "../common/index";
 import ExpandPopup from "./ExpandPopup";
 import { fetchMyListData } from "../../redux/sliceReducers/myListSlice";
+import { addNowPlayingHoverMovieVideo } from "../../redux/sliceReducers/movieSlice";
+import { addNowPlayingHoverMovieLogo } from "../../redux/sliceReducers/movieSlice";
 
 const CardPopup = ({ active, item, handleClosePopUp  }) => {
   const dispatch = useDispatch();
@@ -44,8 +46,8 @@ const CardPopup = ({ active, item, handleClosePopUp  }) => {
 
   const [expandPopUp, setExpandPopUp] = useState(false);
 
-  useFetchMovieVideos(item, "hoverVideo");
-  useFetchLogo(item, "popUpLogo");
+  useFetchMovieVideos(item,addNowPlayingHoverMovieVideo);
+  useFetchLogo(item,addNowPlayingHoverMovieLogo);
   useFetchMovieDetaills(item?.id);
 
   const videoPlayHandler = () => {

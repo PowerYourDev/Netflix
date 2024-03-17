@@ -3,15 +3,27 @@ import { UseSelector, useSelector } from "react-redux";
 
 
 import { POSTER_CDN } from "../../../constant";
-import useFetchMovieVideos from "../../../customHooks/useFetchMovieVideos";
+// import useFetchMovieVideos from "../../../customHooks/useFetchMovieVideos";
+// import { addNowPlayingBackGroundMovieVideo } from "../../../redux/sliceReducers/movieSlice";
+// import { addNowPlayingTvShowsVideo } from "../../../redux/sliceReducers/movieSlice";
 
 
 const BackgroundVideo = (nowPlayingMovie) => {
-  const video= useSelector((state)=>state.moviesSlice?.nowPlayingBackGroundMovieVideo?.playingBackGroundMovieVideo)
+  const MovieVideo= useSelector((state)=>state.moviesSlice?.nowPlayingBackGroundMovieVideo?.playingBackGroundMovieVideo)
+
+  const tvShowsVideo=useSelector((state)=>state?.moviesSlice?.nowPlayingBackGroundTvShowsVideo?.playingBackGroundTvShowsVideo)
+  const activeItem = useSelector((state)=>state?.userTab?.currentUserTab)
+  
+
+
+  const video = activeItem==="/movies-browse" || activeItem === "/movies"?MovieVideo:tvShowsVideo
+
+  
+  // const NowPlayingMovieVideoAction = activeItem==="/movies-browse" || activeItem === "/movies" ?addNowPlayingBackGroundMovieVideo:addNowPlayingTvShowsVideo
  
   console.log(nowPlayingMovie,"nowplayinng,ovie")
 
-  useFetchMovieVideos(nowPlayingMovie,"BackgroundVideo")
+  // useFetchMovieVideos(nowPlayingMovie,NowPlayingMovieVideoAction)
   // if (!video) return null;
 
   return (

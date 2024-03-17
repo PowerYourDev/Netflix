@@ -7,9 +7,12 @@ import {
   addNowPlayingHoverMovieVideo,
 } from "../redux/sliceReducers/movieSlice";
 
-const useFetchMovieVideos = (nowPlayingMovie, BackgroundVideo) => {
+const useFetchMovieVideos = (nowPlayingMovie, action) => {
 
   const activeItem = useSelector((state)=>state?.userTab?.currentUserTab)
+  // const {nowPlayingMovies}=useSelector((state)=>state?.moviesSlice)
+
+  const Base_url = process.env.REACT_APP_BASE_API_URL
  
   const dispatch = useDispatch();
 
@@ -39,9 +42,9 @@ const useFetchMovieVideos = (nowPlayingMovie, BackgroundVideo) => {
           ? movieVideosData?.results[0]
           : CurrentVideoTrailer;
 
-      BackgroundVideo === "BackgroundVideo"
-        ? dispatch(addNowPlayingBackGroundMovieVideo(currentVideo))
-        : dispatch(addNowPlayingHoverMovieVideo(currentVideo));
+      
+         dispatch(action(currentVideo))
+       
     } catch (error) {
       console.log(error);
     }
@@ -49,7 +52,7 @@ const useFetchMovieVideos = (nowPlayingMovie, BackgroundVideo) => {
 
   useEffect(() => {
     fetchMovieVideos();
-  }, [activeItem]);
+  }, [activeItem,nowPlayingMovie]);
 };
 
 export default useFetchMovieVideos;

@@ -52,12 +52,11 @@ const Header = () => {
   };
 
   const handleNavigate = (item) => {
-    if(item !== location?.pathname) {
-      dispatch(makingToIntialState());
+    
+      // dispatch(makingToIntialState());
       dispatch(addCurrentUserTab(item));
       navigate(item);
-    }
-   
+
   };
 
   useEffect(() => {
@@ -67,7 +66,7 @@ const Header = () => {
 
   useEffect(() => {
    
-    dispatch(makingToIntialState());
+    // dispatch(makingToIntialState());
     dispatch(addCurrentUserTab(location.pathname));
   }, [location.pathname]);
 
@@ -79,6 +78,7 @@ const Header = () => {
 
   return (
     <>
+  
       {userData ? (
         <div
           className={`${
