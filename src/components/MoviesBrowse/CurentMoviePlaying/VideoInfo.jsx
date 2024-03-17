@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
 
-import { truncateString } from "../../../utilis/common";
+import { getActiveItems, truncateString } from "../../../utilis/common";
 import playIcon from "../../../Assets/svg/playIcon.svg";
 import moreInfoIcon from "../../../Assets/svg/moreInfoIcon.svg";
 import useFetchLogo from "../../../customHooks/useFetchLogo";
@@ -18,7 +18,7 @@ const VideoInfo = (nowPlayingMovie) => {
   
 const [popUpActive,setPopUpActive]=useState(false)
 
-// const backgroundMovieData= useSelector((state)=>state?.moviesSlice?.nowPlayingBackGroundMovieVideo?.playingBackGroundMovieVideo)
+
 console.log(nowPlayingMovie,"nowplayinng,ovie")
 
   const movieLogo = useSelector(
@@ -31,12 +31,10 @@ console.log(nowPlayingMovie,"nowplayinng,ovie")
   const activeItem = useSelector((state)=>state?.userTab?.currentUserTab)
 
 
-  
+  const logo =getActiveItems(activeItem,movieLogo,tvShowsLogo)
+  const NowPlayingMovieLogoAction=getActiveItems(activeItem,addNowPlayingBackGroundMovieLogo,addNowPlayingTvShowsLogo)
 
 
-  const logo = activeItem==="/movies-browse" || activeItem === "/movies"?movieLogo:tvShowsLogo
-
-  const NowPlayingMovieLogoAction = activeItem==="/movies-browse" || activeItem === "/movies"?addNowPlayingBackGroundMovieLogo:addNowPlayingTvShowsLogo
   const handlePlay = () => {
     navigate("/movie-playing/banner-movie");
   };

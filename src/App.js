@@ -8,7 +8,7 @@ import { ToastContainer } from "react-toastify";
 import Login from './components/Login'
 import ProtectedRoutes from './components/ProtectedRoutes'
 import FullVideo from "./components/FullVideo"
-import MyList from  "./components/myList"
+import MyList from  "./pages/myList"
 
 import MoviesBrowse from './components/MoviesBrowse'
 import HomePage from './pages/Home';

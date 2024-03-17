@@ -53,7 +53,7 @@ const Header = () => {
 
   const handleNavigate = (item) => {
     
-      // dispatch(makingToIntialState());
+    
       dispatch(addCurrentUserTab(item));
       navigate(item);
 
@@ -66,7 +66,7 @@ const Header = () => {
 
   useEffect(() => {
    
-    // dispatch(makingToIntialState());
+   
     dispatch(addCurrentUserTab(location.pathname));
   }, [location.pathname]);
 

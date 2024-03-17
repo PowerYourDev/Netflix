@@ -1,5 +1,6 @@
 import React from 'react'
 import { useSelector } from 'react-redux'
+import { getActiveItems } from '../../../utilis/common'
 
 
 
@@ -12,23 +13,25 @@ const MovieLists = () => {
     const {nowPlayingMovies,popularMovies,upComingMovies}=useSelector((state)=>state?.moviesSlice)
     const {nowPlayingTvShows,popularTvShows,upComingTvShows}=useSelector((state)=>state?.moviesSlice)
 
-    const nowPlaying = activeItem==="/movies-browse" || activeItem === "/movies"?nowPlayingMovies:nowPlayingTvShows
-    const popular = activeItem==="/movies-browse" || activeItem === "/movies"?popularMovies:popularTvShows
-    const upComing = activeItem==="/movies-browse" || activeItem === "/movies"?upComingMovies:upComingTvShows
+    const nowPlaying =getActiveItems(activeItem,nowPlayingMovies,nowPlayingTvShows)
+    const popular =getActiveItems(activeItem,popularMovies,popularTvShows)
+    const upComing =getActiveItems(activeItem,upComingMovies,upComingTvShows)
+
+
 
 
   return (
      <div className='bg-black -mt-[12%]'>
         <div >
-        <Cardrow title={"NOW PLAYING MOVIES"} data={nowPlaying}/>
+        <Cardrow title={getActiveItems(activeItem,"NOW PLAYING MOVIES","NOW PLAYING SHOWS")} data={nowPlaying}/>
         </div>
 
         <div className='mt-[3%]'>
-        <Cardrow title={"NOW PLAYING MOVIES"} data={popular}/>
+        <Cardrow title={getActiveItems(activeItem,"POPULAR MOVIES","POPULAR SHOWS")} data={popular}/>
         </div>
 
         <div  className='mt-[3%]'>
-        <Cardrow title={"NOW PLAYING MOVIES"} data={upComing}/>
+        <Cardrow title={getActiveItems(activeItem,"UPCOMING MOVIES","UPCOMING SHOWS")} data={upComing}/>
         </div>
 
 

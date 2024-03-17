@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 
-import Header from "../Header";
-import Cardrow from "../MoviesBrowse/movieLists/cardRow";
+import Header from "../../components/Header";
+import Cardrow from "../../components/MoviesBrowse/movieLists/cardRow";
 import { db } from "../../utilis/firebase";
 import { arrayRemove, doc, onSnapshot, updateDoc } from "firebase/firestore";
-import ShimmerUi from "../shimmerUi";
+import ShimmerUi from "../../components/shimmerUi";
 
 const MyList = () => {
   const userData = useSelector((state) => state?.userSlice);

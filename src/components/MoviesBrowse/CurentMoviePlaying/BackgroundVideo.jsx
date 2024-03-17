@@ -1,30 +1,28 @@
-import React, { useEffect, useState } from "react";
-import { UseSelector, useSelector } from "react-redux";
-
+import React from "react";
+import { useSelector } from "react-redux";
 
 import { POSTER_CDN } from "../../../constant";
-// import useFetchMovieVideos from "../../../customHooks/useFetchMovieVideos";
-// import { addNowPlayingBackGroundMovieVideo } from "../../../redux/sliceReducers/movieSlice";
-// import { addNowPlayingTvShowsVideo } from "../../../redux/sliceReducers/movieSlice";
-
+import { getActiveItems } from "../../../utilis/common";
 
 const BackgroundVideo = (nowPlayingMovie) => {
-  const MovieVideo= useSelector((state)=>state.moviesSlice?.nowPlayingBackGroundMovieVideo?.playingBackGroundMovieVideo)
+  const MovieVideo = useSelector(
+    (state) =>
+      state.moviesSlice?.nowPlayingBackGroundMovieVideo
+        ?.playingBackGroundMovieVideo
+  );
 
-  const tvShowsVideo=useSelector((state)=>state?.moviesSlice?.nowPlayingBackGroundTvShowsVideo?.playingBackGroundTvShowsVideo)
-  const activeItem = useSelector((state)=>state?.userTab?.currentUserTab)
-  
+  const tvShowsVideo = useSelector(
+    (state) =>
+      state?.moviesSlice?.nowPlayingBackGroundTvShowsVideo
+        ?.playingBackGroundTvShowsVideo
+  );
+  const activeItem = useSelector((state) => state?.userTab?.currentUserTab);
 
+  const video = getActiveItems(activeItem, MovieVideo, tvShowsVideo);
 
-  const video = activeItem==="/movies-browse" || activeItem === "/movies"?MovieVideo:tvShowsVideo
+  // const video = activeItem==="/movies-browse" || activeItem === "/movies"?MovieVideo:tvShowsVideo
 
-  
-  // const NowPlayingMovieVideoAction = activeItem==="/movies-browse" || activeItem === "/movies" ?addNowPlayingBackGroundMovieVideo:addNowPlayingTvShowsVideo
- 
-  console.log(nowPlayingMovie,"nowplayinng,ovie")
-
-  // useFetchMovieVideos(nowPlayingMovie,NowPlayingMovieVideoAction)
-  // if (!video) return null;
+  console.log(nowPlayingMovie, "nowplayinng,ovie");
 
   return (
     <>
@@ -38,7 +36,11 @@ const BackgroundVideo = (nowPlayingMovie) => {
           ></iframe>
         </div>
       ) : (
-        <img className="w-full" src={POSTER_CDN + nowPlayingMovie?.posterPath} alt="" />
+        <img
+          className="w-full"
+          src={POSTER_CDN + nowPlayingMovie?.posterPath}
+          alt=""
+        />
       )}
     </>
   );

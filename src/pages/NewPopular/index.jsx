@@ -48,10 +48,9 @@ const NewPopular = () => {
     const popular_end_Point_movies=process.env.REACT_APP_POPULAR_API_ENDPOINT
     const upComing_end_Point_movies=process.env.REACT_APP_UP_COMING_API_ENDPOINT
 
-    useFetchNowPlaying(now_Playing_end_Point,addUpComingTvShows)
+    // useFetchNowPlaying(now_Playing_end_Point,addNowPlayingTvShows)
     useFetchNowPlaying(popular_end_Point,addPopularTvShows)
-    useFetchNowPlaying(upComing_end_Point,addNowPlayingTvShows)
-
+    useFetchNowPlaying(upComing_end_Point,addUpComingTvShows)
 
    
 

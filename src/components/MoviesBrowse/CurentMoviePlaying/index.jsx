@@ -14,6 +14,7 @@ import useFetchMovieVideos from "../../../customHooks/useFetchMovieVideos";
 import { addNowPlayingBackGroundMovieVideo } from "../../../redux/sliceReducers/movieSlice";
 import { addNowPlayingTvShowsVideo } from "../../../redux/sliceReducers/movieSlice";
 import ShimmerUi from '../../shimmerUi'
+import { getActiveItems } from '../../../utilis/common'
 
 
 
@@ -26,16 +27,18 @@ const CurrentmoviePlaying = () => {
   const activeItem = useSelector((state)=>state?.userTab?.currentUserTab)
   
  
-  const nowPlayingMovies = activeItem==="/movies-browse" || activeItem === "/movies"?nowPlayingMoviesData:nowPlayingTvShows
-  const dispatchCurrentPlayingMovies =activeItem==="/movies-browse" || activeItem === "/movies"?makingToIntialStateBackgroundMovies:makingToIntialStateBackgroundTvShows
-  const nowPlayingVideo =activeItem==="/movies-browse" || activeItem === "/movies"?nowPlayingMovieVideo:nowPlayingTvShowVideo
+  const nowPlayingMovies=getActiveItems(activeItem,nowPlayingMoviesData,nowPlayingTvShows)
+  const dispatchCurrentPlayingMovies=getActiveItems(activeItem,makingToIntialStateBackgroundMovies,makingToIntialStateBackgroundTvShows)
+  const nowPlayingVideo=getActiveItems(activeItem,nowPlayingMovieVideo,nowPlayingTvShowVideo)
+  const NowPlayingMovieVideoAction=getActiveItems(activeItem,addNowPlayingBackGroundMovieVideo,addNowPlayingTvShowsVideo)
 
+  
 
   const [nowPlayingMovie,setNowPlayingMovie]=useState(null)
 
 
 
-  const NowPlayingMovieVideoAction = activeItem==="/movies-browse" || activeItem === "/movies" ?addNowPlayingBackGroundMovieVideo:addNowPlayingTvShowsVideo
+
 
  
   useFetchMovieVideos(nowPlayingMovie,NowPlayingMovieVideoAction)

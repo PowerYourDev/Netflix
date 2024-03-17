@@ -4,9 +4,7 @@ import { useSelector } from "react-redux";
 import Card from "./Card";
 
 const Cardrow = ({ title, data }) => {
-  const nowPLayingMovies = useSelector(
-    (state) => state?.moviesSlice?.nowPlayingMovies
-  );
+ 
   return (
     <div className="ml-[4%]">
       <h1 className="text-white mb-[0.5%]  text-[1.4vw]">{title}</h1>

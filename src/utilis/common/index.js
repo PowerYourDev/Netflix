@@ -21,3 +21,9 @@ export const truncateString=(text, maxLength) =>{
     return date.getFullYear();
   }
  
+
+  //checking route based on making different action
+
+  export const getActiveItems = (activeItem, movies, tvShows) => {
+    return activeItem === "/movies-browse" || activeItem === "/movies" ? movies : tvShows;
+  };
