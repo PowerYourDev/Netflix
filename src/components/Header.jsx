@@ -12,8 +12,10 @@ import { addCurrentUserTab } from "../redux/sliceReducers/userTabSlice";
 import ProfileDropDown from "../utilis/common/ProfileDropDown";
 import search from "../Assets/svg/search.svg"
 import MultiLangselect from "../utilis/common/multiLangselect";
+import { useTranslation } from "react-i18next";
 
 const Header = () => {
+  const {t}=useTranslation()
   const userData = useSelector((state) => state?.userSlice);
   const activeItem = useSelector((state) => state?.userTab?.currentUserTab);
 
@@ -95,7 +97,7 @@ const Header = () => {
                 } cursor-pointer hover:text-[#b3b3b3]`}
                 onClick={() => handleNavigate("/movies-browse")}
               >
-                Home
+                {t("Home")}
               </li>
               <li
                 className={`${
@@ -103,7 +105,7 @@ const Header = () => {
                 } cursor-pointer hover:text-[#b3b3b3]`}
                 onClick={() => handleNavigate("/tv-shows")}
               >
-                Tv Shows
+                {t("Tv Shows")}
               </li>
               <li
                 className={`${
@@ -111,7 +113,7 @@ const Header = () => {
                 } cursor-pointer hover:text-[#b3b3b3]`}
                 onClick={() => handleNavigate("/movies")}
               >
-                Movies
+                {t("Movies")}
               </li>
               <li
                 className={`${
@@ -119,7 +121,7 @@ const Header = () => {
                 } cursor-pointer hover:text-[#b3b3b3]`}
                 onClick={() => handleNavigate("/my-lists")}
               >
-                My List
+              {t("My List")}
               </li>
               <li
                 className={`${
@@ -127,7 +129,7 @@ const Header = () => {
                 } cursor-pointer hover:text-[#b3b3b3]`}
                 onClick={() => handleNavigate("/new-popular")}
               >
-                New & Popular
+                {t("New & Popular")}
               </li>
             </ul>
           </div>
@@ -137,7 +139,7 @@ const Header = () => {
                  <li className="">
                   <div className="border-[0.5px] border-white bg-black  flex py-[6px] px-2 items-center">
                     <img src={search} alt="" className="pr-2" />
-                  <input type="text" className="border-none outline-none bg-transparent" placeholder="search for time waste"/>
+                  <input type="text" className="border-none outline-none bg-transparent" placeholder={t("search for time waste")}/>
                   </div>
                
                  </li>
@@ -147,7 +149,7 @@ const Header = () => {
                   activeItem === "/new-popular" && "font-bold"
                 } cursor-pointer hover:text-[#b3b3b3]`}
               >
-                Children
+                {t("Children")}
               </li>
              <li onMouseEnter={handleProfileDropDownOnEnter} onMouseLeave={handleProfileDropDownOnLeave} className="relative">
              <img src={profileIcon} alt="" />

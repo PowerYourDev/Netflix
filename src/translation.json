@@ -1,0 +1,129 @@
+{
+    "en": {
+      "translation": {
+        "English": "English",
+        "sign In": "sign In",
+        "Full Name": "Full Name",
+        "sign Up": "sign Up",
+        "fullName is required": "fullName is required",
+        "Email": "Email",
+        "email is required": "email is required",
+        "invalid email": "invalid email",
+        "Password": "Password",
+        "password is required": "password is required",
+        "Password must be at least 8 characters and include a letter, a digit, and a special character.": "Password must be at least 8 characters and include a letter, a digit, and a special character.",
+        "Already registered?": "Already registered?",
+        "New to Netflix?": " New to Netflix?",
+        "Sign in now": " Sign in now",
+        "Sign up now": " Sign up now",
+        "Login successful. Welcome back!": "Login successful. Welcome back!",
+        "Invalid login credentials. Please try again!": "Invalid login credentials. Please try again!",
+        "Something went wrong, please try again later!": "Something went wrong, please try again later!",
+        "Account created successfully. Please sign in.!": "Account created successfully. Please sign in.!",
+        "Email already exist!": "Email already exist!",
+  
+        "Home": "Home",
+        "Tv Shows": "Tv Shows",
+        "Movies": "Movies",
+        "My List": "My List",
+        "New & Popular": "New & Popular",
+        "search for time waste": "search for time waste",
+        "Children": "Children",
+  
+        "change Profile": "change Profile",
+        "change Language": "change Language",
+        "Sign out of Netflix": "Sign out of Netflix",
+  
+        "Play": "Play",
+        "More Info": "More Info",
+
+
+        "NOW PLAYING MOVIES":"NOW PLAYING MOVIES",
+        "NOW PLAYING SHOWS": "NOW PLAYING SHOWS",
+        "POPULAR MOVIES":"POPULAR MOVIES",
+        "POPULAR SHOWS":"POPULAR SHOWS",
+        "UPCOMING MOVIES":"UPCOMING MOVIES",
+        "UPCOMING SHOWS":"UPCOMING SHOWS",
+
+       
+        "Your list seems lonely without any movies. Let's change that!":"Your list seems lonely without any movies. Let's change that!",
+
+        "Movie added to My List":"Movie added to My List",
+        "Something went wrong, try again":"Something went wrong, try again",
+        "Movie removed  from My List":"Movie removed  from My List",
+
+        "% Rating":"% Rating",
+        "U/A 16+":"U/A 16+",
+        "A":"A",
+        "HD":"HD",
+
+        "More Like This":"More Like This"
+      }
+    },
+    "hi": {
+      "translation": {
+        "Hindi": "हिंदी",
+        "sign In": "साइन इन करें",
+        "Full Name": "पूरा नाम",
+        "sign Up": "साइन अप करें",
+        "fullName is required": "पूरा नाम आवश्यक है",
+        "Email": "ईमेल",
+        "email is required": "ईमेल आवश्यक है",
+        "invalid email": "अमान्य ईमेल",
+        "Password": "पासवर्ड",
+        "password is required": "पासवर्ड आवश्यक है",
+        "Password must be at least 8 characters and include a letter, a digit, and a special character.": "पासवर्ड कम से कम 8 अक्षर का होना चाहिए और इसमें एक अक्षर, एक अंक और एक विशेष अक्षर शामिल होना चाहिए।",
+        "Already registered?": "पहले से ही पंजीकृत?",
+        "New to Netflix?": "नेटफ्लिक्स पर नया?",
+        "Sign in now": " अभी साइन इन करें",
+        "Sign up now": " अभी साइन अप करें",
+        "Login successful. Welcome back!": "लॉगिन सफल। वापस आपका स्वागत है!",
+        "Invalid login credentials. Please try again!": "अमान्य लॉगिन क्रेडेंशियल्स। कृपया पुन: प्रयास करें!",
+        "Something went wrong, please try again later!": "कुछ गलत हो गया है, कृपया बाद में पुन: प्रयास करें!",
+        "Account created successfully. Please sign in.!": "खाता सफलतापूर्वक बनाया गया। कृपया साइन इन करें!",
+        "Email already exist!": "ईमेल पहले से मौजूद है!",
+  
+        "Home": "घर",
+        "Tv Shows": "टीवी शो",
+        "Movies": "फिल्में",
+        "My List": "मेरी सूची",
+        "New & Popular": "नया और लोकप्रिय",
+        "search for time waste": "समय बर्बाद करने के लिए खोजें",
+        "Children": "बच्चे",
+  
+        "change Profile": "प्रोफ़ाइल बदलें",
+        "change Language": "भाषा बदलें",
+        "Sign out of Netflix": "Netflix से लॉग आउट करें",
+  
+        "Play": "चलाएं",
+        "More Info": "अधिक जानकारी",
+
+        "NOW PLAYING MOVIES": "अब चल रही फ़िल्में",
+        "NOW PLAYING SHOWS": "अब चल रहे शो",
+        "POPULAR MOVIES": "लोकप्रिय फ़िल्में",
+        "POPULAR SHOWS": "लोकप्रिय शो",
+        "UPCOMING MOVIES": "आगामी फ़िल्में",
+        "UPCOMING SHOWS": "आगामी शो",
+
+
+        "Your list seems lonely without any movies. Let's change that!": "आपकी सूची एकांतपूर्ण लग रही है बिना किसी फिल्म के। चलो इसे बदलते हैं!",
+
+        "Movie added to My List": "फिल्म मेरी सूची में जोड़ी गई",
+        "Something went wrong, try again": "कुछ गलत हो गया, पुनः प्रयास करें",
+        "Movie removed from My List": "फिल्म मेरी सूची से हटा दी गई",
+        "% Rating": "% रेटिंग",
+        "U/A 16+": "U/A 16+",
+        "A": "A",
+        "HD": "HD",
+
+
+        "More Like This": "इसके जैसा और"
+  
+       
+    
+    
+    
+}
+    }
+  }
+  

@@ -11,9 +11,11 @@ import CardPopup from "../../../utilis/common/CardPopup";
 
 import { addNowPlayingBackGroundMovieLogo } from "../../../redux/sliceReducers/movieSlice";
 import { addNowPlayingTvShowsLogo } from "../../../redux/sliceReducers/movieSlice";
+import { useTranslation } from "react-i18next";
 
 
 const VideoInfo = (nowPlayingMovie) => {
+  const {t}=useTranslation()
   const navigate = useNavigate();
   
 const [popUpActive,setPopUpActive]=useState(false)
@@ -79,13 +81,13 @@ console.log(nowPlayingMovie,"nowplayinng,ovie")
           <img src={playIcon} />
           <button className="text-[1.4rem] font-semibold leading-[2.4rem]">
             {" "}
-            Play
+          {t("Play")}
           </button>
         </div>
         <div className="flex gap-[0.5rem] bg-[#6D6D6EB3] text-[#fff] pl-[2rem] pr-[2.5rem] rounded py-[0.5rem] cursor-pointer" onClick={handleMoreInfo}>
           <img src={moreInfoIcon} />
           <button className="text-[1.4rem] font-semibold leading-[2.4rem]">
-            More Info
+            {t("More Info")}
           </button>
         </div>
       </div>

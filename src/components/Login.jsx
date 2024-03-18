@@ -50,13 +50,13 @@ const Login = () => {
           dispatch(addUser({ accessToken, email, photoURL }));
           navigate("/movies-browse");
           dispatch(fetchMyListData(isSignedIn?.user));
-          toast.success("Login successful. Welcome back!");
+          toast.success(t("Login successful. Welcome back!"));
         }
       } catch (error) {
         if (error?.code === "auth/invalid-credential") {
-          toast.error("Invalid login credentials. Please try again!");
+          toast.error(t("Invalid login credentials. Please try again!"));
         } else {
-          toast.error("Something went wrong, please try again later!");
+          toast.error(t("Something went wrong, please try again later!"));
         }
         // console.log(error)
         // const errorCode = error.code;
@@ -77,15 +77,15 @@ const Login = () => {
         });
 
         if (isUserCreated?.user) {
-          toast.success("Account created successfully. Please sign in.!");
+          toast.success(t("Account created successfully. Please sign in.!"));
           setSignIn(false);
         }
      
       } catch (error) {
         if (error?.code === "auth/email-already-in-use") {
-          toast.error("Email already exist!");
+          toast.error(t("Email already exist!"));
         } else {
-          toast.error("Something went wrong, please try again later!");
+          toast.error(t("Something went wrong, please try again later!"));
         }
 
         // const errorCode = error.code;
@@ -124,17 +124,17 @@ const Login = () => {
       >
         <div className="sm:w-1/4 bg-[rgba(0,0,0,0.7)] flex flex-col  px-[4%] py-[48px]">
           <h1 className="font-bold text-[2rem] mb-4">
-            {signIn ? t("signIn"): t("sign Up")}
+            {signIn ? t("sign In"): t("sign Up")}
           </h1>
           {!signIn && (
             <input
               type="text"
-              placeholder="Full Name"
+              placeholder={t("Full Name")}
               className="bg-[#333333] p-2 rounded-md mt-3"
               {...register("fullName", {
                 required: {
                   value: true,
-                  message: "fullName is required",
+                  message: t("fullName is required"),
                 },
               })}
             />
@@ -145,16 +145,16 @@ const Login = () => {
 
           <input
             type="email"
-            placeholder="Email"
+            placeholder={t("Email")}
             className="bg-[#333333] p-2 rounded-md mt-3"
             {...register("email", {
               required: {
                 value: true,
-                message: "email is required",
+                message: t("email is required"),
               },
               pattern: {
                 value: /^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$/,
-                message: "invalid email",
+                message: t("invalid email"),
               },
             })}
           />
@@ -163,15 +163,15 @@ const Login = () => {
           )}
           <input
             type="password"
-            placeholder="Password"
+            placeholder={t("Password")}
             className="bg-[#333333] p-2 rounded-md mt-3"
             {...register("password", {
-              required: { value: true, message: "password is required" },
+              required: { value: true, message: t("password is required") },
               pattern: {
                 value:
                   /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/,
                 message:
-                  "Password must be at least 8 characters and include a letter, a digit, and a special character.",
+                  t("Password must be at least 8 characters and include a letter, a digit, and a special character."),
               },
             })}
           />
@@ -179,16 +179,16 @@ const Login = () => {
             <p className="text-red-500">{errors?.password?.message}</p>
           )}
           <button type="submit" className="bg-[#E50914] p-2 rounded-md mt-8">
-            {signIn ? "sign In" : "sign Up"}
+            {signIn ? t("sign In") : t("sign Up")}
           </button>
 
           <h5 className="font-normal text-base text-[rgba(255,255,255,0.7)] mt-3">
-            {signIn ? "Already registered?" : "New to Netflix?"}
+            {signIn ? t("Already registered?") : t("New to Netflix?")}
             <span
               onClick={toggleSignIn}
               className="font-medium text-[rgb(255,255,255)] cursor-pointer"
             >
-              {!signIn ? " Sign in now" : " Sign up now"}
+              {!signIn ? t("Sign in now") : t("Sign up now")}
             </span>
           </h5>
         </div>

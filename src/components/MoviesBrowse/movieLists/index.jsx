@@ -5,10 +5,13 @@ import { getActiveItems } from '../../../utilis/common'
 
 
 import Cardrow from './cardRow'
+import { useTranslation } from 'react-i18next'
 
 
 
 const MovieLists = () => {
+  const {t}=useTranslation()
+
    const activeItem = useSelector((state)=>state?.userTab?.currentUserTab)
     const {nowPlayingMovies,popularMovies,upComingMovies}=useSelector((state)=>state?.moviesSlice)
     const {nowPlayingTvShows,popularTvShows,upComingTvShows}=useSelector((state)=>state?.moviesSlice)
@@ -23,15 +26,15 @@ const MovieLists = () => {
   return (
      <div className='bg-black -mt-[12%]'>
         <div >
-        <Cardrow title={getActiveItems(activeItem,"NOW PLAYING MOVIES","NOW PLAYING SHOWS")} data={nowPlaying}/>
+        <Cardrow title={getActiveItems(activeItem,t("NOW PLAYING MOVIES"),t("NOW PLAYING SHOWS"))} data={nowPlaying}/>
         </div>
 
         <div className='mt-[3%]'>
-        <Cardrow title={getActiveItems(activeItem,"POPULAR MOVIES","POPULAR SHOWS")} data={popular}/>
+        <Cardrow title={getActiveItems(activeItem,t("POPULAR MOVIES"),t("POPULAR SHOWS"))} data={popular}/>
         </div>
 
         <div  className='mt-[3%]'>
-        <Cardrow title={getActiveItems(activeItem,"UPCOMING MOVIES","UPCOMING SHOWS")} data={upComing}/>
+        <Cardrow title={getActiveItems(activeItem,t("UPCOMING MOVIES"),t("UPCOMING SHOWS"))} data={upComing}/>
         </div>
 
 

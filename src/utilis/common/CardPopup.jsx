@@ -21,8 +21,11 @@ import ExpandPopup from "./ExpandPopup";
 import { fetchMyListData } from "../../redux/sliceReducers/myListSlice";
 import { addNowPlayingHoverMovieVideo } from "../../redux/sliceReducers/movieSlice";
 import { addNowPlayingHoverMovieLogo } from "../../redux/sliceReducers/movieSlice";
+import { useTranslation } from "react-i18next";
 
 const CardPopup = ({ active, item, handleClosePopUp  }) => {
+  const {t}=useTranslation()
+
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const userData = useSelector((state) => state?.userSlice);
@@ -75,10 +78,10 @@ const CardPopup = ({ active, item, handleClosePopUp  }) => {
       }
 
       dispatch(fetchMyListData(userData));
-      toast.success("Movie added to My List");
+      toast.success(t("Movie added to My List"));
     } catch (e) {
       console.error("Error adding document: ", e);
-      toast.error("Something went wrong, try again");
+      toast.error(t("Something went wrong, try again"));
     }
   };
 
@@ -92,10 +95,10 @@ const CardPopup = ({ active, item, handleClosePopUp  }) => {
 
       dispatch(fetchMyListData(userData));
     
-      toast.success("Movie removed  from My List");
+      toast.success(t("Movie removed from My List"));
     } catch (e) {
       console.error("Error removing document: ", e);
-      toast.error("Something went wrong, try again");
+      toast.error(t("Something went wrong, try again"));
     }
   };
 
@@ -206,18 +209,18 @@ const CardPopup = ({ active, item, handleClosePopUp  }) => {
             </div>
             <div className="flex text-[#bcbcbc] gap-[0.5em] my-[0.8em]">
               <h3 className="text-green-500 font-medium text-[13px]">
-                {movieDetails?.vote_average?.toFixed(2)}% Rating
+                {movieDetails?.vote_average?.toFixed(2)}{t("% Rating")}
               </h3>
 
               <h5 className="border-solid border-[hsla(0, 0%, 100%, .4)] border-[0.5px] text-[13px] font-medium px-[0.4em]">
-                {movieDetails?.adult ? "A" : "U/A 16+"}
+                {movieDetails?.adult ? t("A") : t("U/A 16+")}
               </h5>
 
               <h3 className="text-[13px] font-medium ">
                 {convertMinutesToHoursAndMinutes(movieDetails?.runtime)}
               </h3>
               <h6 className="text-[hsla(0, 0%, 100%, .9)] border-solid border-[hsla(0, 0%, 100%, .4)] border-[0.5px] px-[0.4em] text-[13px]">
-                HD
+                {t("HD")}
               </h6>
             </div>
 

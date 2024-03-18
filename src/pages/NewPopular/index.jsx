@@ -13,10 +13,12 @@ import Header from '../../components/Header';
 import { addNowPlayingMovies } from "../../redux/sliceReducers/movieSlice";
 import {addPopularMovies} from "../../redux/sliceReducers/movieSlice"
 import { addUpComingMovies } from "../../redux/sliceReducers/movieSlice";
+import { useTranslation } from 'react-i18next';
 
 
 
 const NewPopular = () => {
+  const {t}=useTranslation()
 
     const nowPLayingTvShows = useSelector(
         (state) => state?.moviesSlice?.nowPlayingTvShows
@@ -68,21 +70,21 @@ const NewPopular = () => {
         
     <div className='pt-[70px] bg-inherit'>
     <div className='mt-[3%] '>
-    <Cardrow title={"NOW PLAYING MOVIES"} data={nowPLayingTvShows}/>
+    <Cardrow title={t("NOW PLAYING MOVIES")} data={nowPLayingTvShows}/>
     </div>
    <div className='mt-[3%]'>
-   <Cardrow title={"NOW PLAYING MOVIES"} data={popularTvshows}/>
+   <Cardrow title={t("NOW PLAYING MOVIES")} data={popularTvshows}/>
    </div>
  <div className='mt-[3%]'>
- <Cardrow title={"NOW PLAYING MOVIES"} data={upcomingTvShows}/>
+ <Cardrow title={t("NOW PLAYING MOVIES")} data={upcomingTvShows}/>
  </div>
 
  <div className='mt-[3%]'>
- <Cardrow title={"NOW PLAYING MOVIES"} data={upcomingMovies}/>
+ <Cardrow title={t("NOW PLAYING MOVIES")} data={upcomingMovies}/>
  </div>
 
  <div className='mt-[3%]'>
- <Cardrow title={"NOW PLAYING MOVIES"} data={nowPLayingMovies}/>
+ <Cardrow title={t("NOW PLAYING MOVIES")} data={nowPLayingMovies}/>
  </div>
     
     </div>

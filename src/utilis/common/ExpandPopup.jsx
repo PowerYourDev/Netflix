@@ -10,6 +10,7 @@ import { convertMinutesToHoursAndMinutes } from "../common/index";
 import useFetchSimilarMovies from "../../customHooks/useFetchSimilarMovies";
 import SimilarMoviesPopUp from "./SimilarMoviesPopUp";
 import { extractYear } from "../common/index";
+import { useTranslation } from "react-i18next";
 
 const ExpandPopup = ({
   hoverMovie,
@@ -20,6 +21,8 @@ const ExpandPopup = ({
   handleRemoveListItem,
   handleSetListItem,
 }) => {
+
+  const {t}=useTranslation()
   const navigate = useNavigate();
 
   const MylistMovies = useSelector((state) => state?.MyList?.myListData);
@@ -112,7 +115,7 @@ const ExpandPopup = ({
           <div className="my-[0.5em]">
             <div className="flex gap-x-3 items-center mb-2">
               <h3 className="text-green-500 font-medium text-[13px]">
-                {movieDetails?.vote_average?.toFixed(2)}% Rating
+                {movieDetails?.vote_average?.toFixed(2)}{t("% Rating")}
               </h3>
 
               <h3 className="text-white">
@@ -124,12 +127,12 @@ const ExpandPopup = ({
               </h3>
 
               <h6 className="text-[hsla(0, 0%, 100%, .9)] border-solid border-[hsla(0, 0%, 100%, .4)] border-[0.5px] px-[0.4em] text-[13px] text-white">
-                HD
+               {(" HD")}
               </h6>
             </div>
             <div className="flex gap-x-3 ">
               <h5 className="border-solid border-[hsla(0, 0%, 100%, .4)] border-[0.5px] text-[13px] font-medium px-[0.4em] text-white">
-                {movieDetails?.adult ? "A" : "U/A 16+"}
+                {movieDetails?.adult ? t("A") : t("U/A 16+")}
               </h5>
 
               <div className="flex text-white items-center">
