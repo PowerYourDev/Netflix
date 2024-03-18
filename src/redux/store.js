@@ -9,12 +9,14 @@ import userSlice from "./sliceReducers/userSlice";
 import moviesSlice from "./sliceReducers/movieSlice";
 import userTabSlice from "./sliceReducers/userTabSlice";
 import myListSlice from "./sliceReducers/myListSlice";
+import chilldrenSlice from "./sliceReducers/chilldrenSlice";
 
 const reducer = combineReducers({
   userSlice: userSlice,
   moviesSlice: moviesSlice,
   userTab: userTabSlice,
   MyList: myListSlice,
+  chilldrenSlice:chilldrenSlice,
 });
 
 const persistConfig = {

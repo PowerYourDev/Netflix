@@ -14,6 +14,7 @@ import MoviesBrowse from './components/MoviesBrowse'
 import HomePage from './pages/Home';
 import TvShows from './pages/TvShows';
 import NewPopular from './pages/NewPopular';
+import Children from './pages/children';
 // import Tvsowh from './pages/TvShows'
 // import Home from './pages/Home'
 
@@ -44,6 +45,10 @@ const appRouter=createBrowserRouter([
       {
         path:"/new-popular",
         element:<NewPopular/>,
+      },
+      {
+        path:"/children",
+        element:<Children/>,
       },
       {
         path:"/movie-playing/:id",

@@ -146,8 +146,9 @@ const Header = () => {
               {/* tv shows Top rated children */}
               <li
                 className={`${
-                  activeItem === "/new-popular" && "font-bold"
+                  activeItem === "/children" && "font-bold"
                 } cursor-pointer hover:text-[#b3b3b3]`}
+                onClick={() => handleNavigate("/children")}
               >
                 {t("Children")}
               </li>
