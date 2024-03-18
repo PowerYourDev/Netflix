@@ -17,14 +17,20 @@ const useFetchMovieVideos = (nowPlayingMovie, action) => {
   const dispatch = useDispatch();
 
   let  Api_URL;
-  if(activeItem==="/movies-browse" || activeItem==="/movies"){
-    Api_URL=`https://api.themoviedb.org/3/movie/${nowPlayingMovie?.id}/videos`
-  }else if(activeItem==="/tv-shows" || nowPlayingMovie?.media_type==="tv"){
-    Api_URL=`https://api.themoviedb.org/3/tv/${nowPlayingMovie?.id}/videos`
-  }else{
-    Api_URL=`https://api.themoviedb.org/3/movie/${nowPlayingMovie?.id}/videos`
-  }
+  // if(activeItem==="/movies-browse" || activeItem==="/movies"){
+  //   Api_URL=`https://api.themoviedb.org/3/movie/${nowPlayingMovie?.id}/videos`
+  // }else if(activeItem==="/tv-shows" || nowPlayingMovie?.media_type==="tv"){
+  //   Api_URL=`https://api.themoviedb.org/3/tv/${nowPlayingMovie?.id}/videos`
+  // }else{
+  //   Api_URL=`https://api.themoviedb.org/3/movie/${nowPlayingMovie?.id}/videos`
+  // }
 
+  if (nowPlayingMovie?.hasOwnProperty('first_air_date')) {
+    Api_URL=`https://api.themoviedb.org/3/tv/${nowPlayingMovie?.id}/videos`
+  } else {
+    Api_URL=`https://api.themoviedb.org/3/movie/${nowPlayingMovie?.id}/videos`
+ 
+  }
   const fetchMovieVideos = async () => {
     try {
       const movieVideosJsonData = await fetch(

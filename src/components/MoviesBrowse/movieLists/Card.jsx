@@ -4,6 +4,7 @@ import { useDispatch } from "react-redux";
 import { POSTER_CDN } from "../../../constant";
 import CardPopup from "../../../utilis/common/CardPopup";
 import { makingHoverToIntialState } from "../../../redux/sliceReducers/movieSlice";
+import { addNowPlayingHoverMovieData } from "../../../redux/sliceReducers/movieSlice";
 
 
 const Card = ({ item }) => {
@@ -11,8 +12,9 @@ const Card = ({ item }) => {
   const dispatch=useDispatch()
   const [active, setActive] = useState(false);
 
-  const posterPopupHandler = () => {
-    setActive((pre)=>!pre);
+  const posterPopupHandler = (item) => {
+    setActive(true);
+    dispatch(addNowPlayingHoverMovieData(item))
 
   };
 
@@ -35,7 +37,7 @@ const Card = ({ item }) => {
         <img
           src={POSTER_CDN + item?.poster_path}
           className="w-full h-full object-cover"
-          onClick={posterPopupHandler}
+          onClick={()=>posterPopupHandler(item)}
         />
       </div>
     </div>

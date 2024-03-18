@@ -13,12 +13,19 @@ const useFetchLogo = (item, action) => {
   const dispatch = useDispatch();
 
   let  Api_URL;
-  if(activeItem==="/movies-browse" || activeItem==="/movies"){
-    Api_URL="https://api.themoviedb.org/3/movie/"+item?.id +"/images?include_image_language=en"
-  }else if(activeItem==="/tv-shows" || item?.media_type==="tv"){
-    Api_URL="https://api.themoviedb.org/3/tv/"+ item?.id +"/images"
-  }else{
-    Api_URL="https://api.themoviedb.org/3/movie/"+item?.id +"/images?include_image_language=en" 
+  // if(activeItem==="/movies-browse" || activeItem==="/movies"){
+  //   Api_URL="https://api.themoviedb.org/3/movie/"+item?.id +"/images?include_image_language=en"
+  // }else if(activeItem==="/tv-shows" || item?.media_type==="tv"){
+  //   Api_URL="https://api.themoviedb.org/3/tv/"+ item?.id +"/images"
+  // }else{
+  //   Api_URL="https://api.themoviedb.org/3/movie/"+item?.id +"/images?include_image_language=en" 
+  // }
+
+  if (item?.hasOwnProperty('first_air_date')) {
+     Api_URL="https://api.themoviedb.org/3/tv/"+ item?.id +"/images"
+  } else {
+     Api_URL="https://api.themoviedb.org/3/movie/"+item?.id +"/images?include_image_language=en"
+ 
   }
 
   const fetchImagePosters = async () => {

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 
 import { getActiveItems, truncateString } from "../../../utilis/common";
 import playIcon from "../../../Assets/svg/playIcon.svg";
@@ -9,7 +9,7 @@ import useFetchLogo from "../../../customHooks/useFetchLogo";
 import { POSTER_CDN } from "../../../constant";
 import CardPopup from "../../../utilis/common/CardPopup";
 
-import { addNowPlayingBackGroundMovieLogo } from "../../../redux/sliceReducers/movieSlice";
+import { addNowPlayingBackGroundMovieLogo, addNowPlayingHoverMovieData } from "../../../redux/sliceReducers/movieSlice";
 import { addNowPlayingTvShowsLogo } from "../../../redux/sliceReducers/movieSlice";
 import { useTranslation } from "react-i18next";
 
@@ -17,6 +17,7 @@ import { useTranslation } from "react-i18next";
 const VideoInfo = (nowPlayingMovie) => {
   const {t}=useTranslation()
   const navigate = useNavigate();
+  const dispatch=useDispatch()
   
 const [popUpActive,setPopUpActive]=useState(false)
 
@@ -41,8 +42,9 @@ console.log(nowPlayingMovie,"nowplayinng,ovie")
     navigate("/movie-playing/banner-movie");
   };
 
-  const handleMoreInfo=()=>{
+  const handleMoreInfo=(nowPlayingMovie)=>{
     setPopUpActive(true)
+    dispatch(addNowPlayingHoverMovieData(nowPlayingMovie))
   }
 
   const handleClosePopUp=()=>{
@@ -84,7 +86,7 @@ console.log(nowPlayingMovie,"nowplayinng,ovie")
           {t("Play")}
           </button>
         </div>
-        <div className="flex gap-[0.5rem] bg-[#6D6D6EB3] text-[#fff] pl-[2rem] pr-[2.5rem] rounded py-[0.5rem] cursor-pointer" onClick={handleMoreInfo}>
+        <div className="flex gap-[0.5rem] bg-[#6D6D6EB3] text-[#fff] pl-[2rem] pr-[2.5rem] rounded py-[0.5rem] cursor-pointer" onClick={()=>handleMoreInfo(nowPlayingMovie)}>
           <img src={moreInfoIcon} />
           <button className="text-[1.4rem] font-semibold leading-[2.4rem]">
             {t("More Info")}
