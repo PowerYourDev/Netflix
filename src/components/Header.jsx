@@ -7,7 +7,7 @@ import { useLocation } from "react-router-dom";
 import { netflixLogo } from "../constant";
 import { removeUser } from "../redux/sliceReducers/userSlice";
 import { profileIcon } from "../constant";
-import { makingToIntialState } from "../redux/sliceReducers/movieSlice";
+
 import { addCurrentUserTab } from "../redux/sliceReducers/userTabSlice";
 import ProfileDropDown from "../utilis/common/ProfileDropDown";
 import search from "../Assets/svg/search.svg"
@@ -70,13 +70,14 @@ const Header = () => {
    
    
     dispatch(addCurrentUserTab(location.pathname));
-  }, [location.pathname]);
+
+  }, [location.pathname,dispatch]);
 
   useEffect(() => {
     return () => {
       clearTimeout(timeoutId); 
     };
-  }, []);
+  }, [timeoutId]);
 
   return (
     <>

@@ -1,18 +1,15 @@
-import { React, useEffect } from "react";
+import {useEffect } from "react";
 import { useDispatch,useSelector } from "react-redux";
 
 import { API_OPTIONS } from "../constant";
-import {
-  addNowPlayingBackGroundMovieVideo,
-  addNowPlayingHoverMovieVideo,
-} from "../redux/sliceReducers/movieSlice";
+
 
 const useFetchMovieVideos = (nowPlayingMovie, action) => {
 
   const activeItem = useSelector((state)=>state?.userTab?.currentUserTab)
   // const {nowPlayingMovies}=useSelector((state)=>state?.moviesSlice)
 
-  const Base_url = process.env.REACT_APP_BASE_API_URL
+
  
   const dispatch = useDispatch();
 

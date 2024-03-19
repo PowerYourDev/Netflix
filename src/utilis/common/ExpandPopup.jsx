@@ -73,7 +73,7 @@ const ExpandPopup = ({
                 className="flex gap-[0.5rem] bg-[#fff] text-black pl-[2rem] pr-[2.5rem] rounded py-[0.5rem] cursor-pointer"
                 onClick={() => videoPlayHandler(item?.id)}
               >
-                <img src={playIcon} />
+                <img src={playIcon} alt=''/>
                 <button className="text-[1.4rem] font-semibold leading-[2.4rem]">
                   {" "}
                   Play

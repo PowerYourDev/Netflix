@@ -1,17 +1,17 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { useSelector } from "react-redux";
 
 import Header from "../../components/Header";
 import Cardrow from "../../components/MoviesBrowse/movieLists/cardRow";
-import { db } from "../../utilis/firebase";
-import { arrayRemove, doc, onSnapshot, updateDoc } from "firebase/firestore";
+
+
 import ShimmerUi from "../../components/shimmerUi";
 import { useTranslation } from "react-i18next";
 
 const MyList = () => {
    const {t}=useTranslation()
 
-  const userData = useSelector((state) => state?.userSlice);
+  // const userData = useSelector((state) => state?.userSlice);
   const myListData = useSelector((state) => state?.MyList?.myListData);
 
  

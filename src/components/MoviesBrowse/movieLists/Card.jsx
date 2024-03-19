@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect } from "react";
+import React, { useState} from "react";
 import { useDispatch } from "react-redux";
 
 import { POSTER_CDN } from "../../../constant";
@@ -35,7 +35,7 @@ const Card = ({ item }) => {
      
       <div className="h-[141px] w-[230px] cursor-pointer">
         <img
-          src={POSTER_CDN + item?.poster_path}
+          src={POSTER_CDN + item?.poster_path} alt=""
           className="w-full h-full object-cover"
           onClick={()=>posterPopupHandler(item)}
         />

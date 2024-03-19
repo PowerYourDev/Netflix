@@ -122,7 +122,7 @@ const Login = () => {
         onSubmit={handleSubmit(onSubmit)}
         className="flex justify-center items-center h-screen text-white"
       >
-        <div className="sm:w-1/4 bg-[rgba(0,0,0,0.7)] flex flex-col  px-[4%] py-[48px]">
+        <div className="w-5/6 md:w-1/2 lg:w-1/4 bg-[rgba(0,0,0,0.7)] flex flex-col  px-[4%] py-[48px]">
           <h1 className="font-bold text-[2rem] mb-4">
             {signIn ? t("sign In"): t("sign Up")}
           </h1>

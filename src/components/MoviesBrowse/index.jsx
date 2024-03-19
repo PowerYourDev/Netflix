@@ -1,12 +1,11 @@
-import React, { useEffect } from "react";
-import { useSelector } from "react-redux";
+import React from "react";
+
 
 
 import Header from "../Header";
 
 import CurrentmoviePlaying from "./CurentMoviePlaying";
-import MovieLists from "./movieLists";
-import ShimmerUi from "../shimmerUi";
+
 
 
 

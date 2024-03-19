@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, {useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 
@@ -80,7 +80,7 @@ console.log(nowPlayingMovie,"nowplayinng,ovie")
           className="flex gap-[0.5rem] bg-[#fff] text-black pl-[2rem] pr-[2.5rem] rounded py-[0.5rem] cursor-pointer"
           onClick={() => handlePlay(nowPlayingMovie?.id)}
         >
-          <img src={playIcon} />
+          <img src={playIcon} alt=""/>
           <button className="text-[1.4rem] font-semibold leading-[2.4rem]">
             {" "}
           {t("Play")}

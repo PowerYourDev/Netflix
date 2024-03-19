@@ -1,5 +1,5 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
-import { doc, onSnapshot, getDoc } from "firebase/firestore"; // Assuming you're using Firebase Firestore
+import { doc, getDoc } from "firebase/firestore"; // Assuming you're using Firebase Firestore
 
 // Assuming you have initialized your Firebase Firestore database
 import { db } from "../../utilis/firebase";

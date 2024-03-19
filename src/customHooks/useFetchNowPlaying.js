@@ -1,9 +1,9 @@
-import React,{useEffect} from 'react'
-import { useDispatch,useSelector } from "react-redux";
+import {useEffect} from 'react'
+import { useDispatch} from "react-redux";
 
 
 import { API_OPTIONS } from "../constant";
-import { addNowPlayingMovies } from "../redux/sliceReducers/movieSlice";
+
 
 const useFetchNowPlaying = (API_ENDPOINT,action) => {
   const Base_url = process.env.REACT_APP_BASE_API_URL

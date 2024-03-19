@@ -1,8 +1,7 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { useParams } from "react-router-dom";
 import { useSelector } from "react-redux";
 
-import { API_OPTIONS, POSTER_CDN } from "../../constant";
 
 const FullVideo = () => {
   const { id } = useParams();

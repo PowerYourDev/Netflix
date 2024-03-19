@@ -1,5 +1,5 @@
-import React, { useRef, useState } from "react";
-import { useSelector } from "react-redux";
+import React from "react";
+
 
 import Card from "./Card";
 import { useTranslation } from "react-i18next";

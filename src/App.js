@@ -10,13 +10,11 @@ import ProtectedRoutes from './components/ProtectedRoutes'
 import FullVideo from "./components/FullVideo"
 import MyList from  "./pages/myList"
 
-import MoviesBrowse from './components/MoviesBrowse'
 import HomePage from './pages/Home';
 import TvShows from './pages/TvShows';
 import NewPopular from './pages/NewPopular';
 import Children from './pages/children';
-// import Tvsowh from './pages/TvShows'
-// import Home from './pages/Home'
+
 
 const appRouter=createBrowserRouter([
   {

@@ -1,11 +1,8 @@
-import React, { useEffect } from "react";
+import { useEffect } from "react";
 import { useDispatch,useSelector } from "react-redux";
 
-import { API_OPTIONS, POSTER_CDN } from "../constant";
-import {
-  addNowPlayingHoverMovieLogo,
-  addNowPlayingBackGroundMovieLogo,
-} from "../redux/sliceReducers/movieSlice";
+import { API_OPTIONS, } from "../constant";
+
 
 const useFetchLogo = (item, action) => {
   const activeItem = useSelector((state)=>state?.userTab?.currentUserTab)

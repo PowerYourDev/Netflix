@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from 'react-redux'
 
 import BackgroundVideo from './BackgroundVideo'
 import VideoInfo from './VideoInfo'
-import Header from "../../Header"
+
 import MovieLists from "../movieLists";
 import { makingToIntialStateBackgroundMovies } from '../../../redux/sliceReducers/movieSlice'
 import { makingToIntialStateBackgroundTvShows } from '../../../redux/sliceReducers/movieSlice'
@@ -49,13 +49,13 @@ const CurrentmoviePlaying = () => {
     const randomIndex = nowPlayingMovies ? Math.floor(Math.random() * nowPlayingMovies.length) : 0;
     const nowPlayingMovie = nowPlayingMovies&&nowPlayingMovies[randomIndex]
      setNowPlayingMovie(nowPlayingMovie)
-  },[activeItem])
+  },[activeItem,nowPlayingMovies])
 
   useEffect(()=>{
     return ()=>{
      dispatch(dispatchCurrentPlayingMovies())
     }
-  },[])
+  },[dispatch,dispatchCurrentPlayingMovies])
 
 
    if(!nowPlayingMoviesData || !nowPlayingVideo) return <ShimmerUi/>

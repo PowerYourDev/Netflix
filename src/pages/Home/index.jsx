@@ -1,5 +1,5 @@
 import React from 'react'
-import { useSelector } from 'react-redux';
+
 
 import MoviesBrowse from '../../components/MoviesBrowse'
 import useFetchNowPlaying from '../../customHooks/useFetchNowPlaying'
@@ -7,7 +7,7 @@ import useFetchNowPlaying from '../../customHooks/useFetchNowPlaying'
 import { addNowPlayingMovies } from "../../redux/sliceReducers/movieSlice";
 import {addPopularMovies} from "../../redux/sliceReducers/movieSlice"
 import { addUpComingMovies } from "../../redux/sliceReducers/movieSlice";
-import ShimmerUi from '../../components/shimmerUi';
+
 
 const HomePage = () => {
 

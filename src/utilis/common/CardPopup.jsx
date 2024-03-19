@@ -4,12 +4,12 @@ import { useSelector, useDispatch } from "react-redux";
 import { toast } from "react-toastify";
 
 import { doc, updateDoc, arrayUnion, arrayRemove } from "firebase/firestore";
-import { db, auth } from "../firebase";
+import { db, } from "../firebase";
 
 import expandIcon from "../../Assets/svg/expandIcon.svg";
 import crossIcon from "../../Assets/svg/crossIcon.svg";
 import playIcon from "../../Assets/svg/playIcon.svg";
-import moreInfoIcon from "../../Assets/svg/moreInfoIcon.svg";
+
 import plusIcon from "../../Assets/svg/plusIcon.svg";
 
 import { POSTER_CDN } from "../../constant";

@@ -1,5 +1,5 @@
 import React from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 
 import { POSTER_CDN } from "../../constant";
 import plusIcon from "../../Assets/svg/plusIcon.svg";
@@ -10,7 +10,7 @@ import { useTranslation } from "react-i18next";
 
 const SimilarMoviesPopUp = ({handleRemoveListItem,handleSetListItem}) => {
   const {t}=useTranslation()
- const dispatch=useDispatch()
+
 
   const similarMovieData = useSelector(
     (state) =>
@@ -19,9 +19,9 @@ const SimilarMoviesPopUp = ({handleRemoveListItem,handleSetListItem}) => {
 
   const MylistMovies = useSelector((state) => state?.MyList?.myListData);
 
-  const handleSimilarMovie=()=>{
+  // const handleSimilarMovie=()=>{
     
-  }
+  // }
 
   return (
     <div className="text-white mt-[48px]">

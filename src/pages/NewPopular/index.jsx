@@ -6,7 +6,7 @@ import useFetchNowPlaying from '../../customHooks/useFetchNowPlaying'
 
 import { addUpComingTvShows } from "../../redux/sliceReducers/movieSlice";
 import { addPopularTvShows } from "../../redux/sliceReducers/movieSlice";
-import { addNowPlayingTvShows } from "../../redux/sliceReducers/movieSlice";
+
 import Header from '../../components/Header';
 
 
@@ -42,7 +42,7 @@ const NewPopular = () => {
       
 
 
-    const now_Playing_end_Point=process.env.REACT_APP_NOW_PLAYING_API_ENDPOINT
+    // const now_Playing_end_Point=process.env.REACT_APP_NOW_PLAYING_API_ENDPOINT
     const popular_end_Point=process.env.REACT_APP_POPULAR_API_ENDPOINT
     const upComing_end_Point=process.env.REACT_APP_UP_COMING_API_ENDPOINT
 
