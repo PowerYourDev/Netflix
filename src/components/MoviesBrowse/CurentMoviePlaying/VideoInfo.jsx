@@ -87,7 +87,7 @@ console.log(nowPlayingMovie,"nowplayinng,ovie")
           </button>
         </div>
         <div className="flex gap-[0.5rem] bg-[#6D6D6EB3] text-[#fff] pl-[2rem] pr-[2.5rem] rounded py-[0.5rem] cursor-pointer" onClick={()=>handleMoreInfo(nowPlayingMovie)}>
-          <img src={moreInfoIcon} />
+          <img src={moreInfoIcon} alt="" />
           <button className="text-[1.4rem] font-semibold leading-[2.4rem]">
             {t("More Info")}
           </button>
