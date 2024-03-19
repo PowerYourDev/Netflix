@@ -29,7 +29,7 @@ const MultiLangselect = ({header}) => {
 
   return (
     //
-    <div className={header==="header"&&'absolute right-[3%] z-10 top-[3%]'}>
+    <div className={header==="header"&&'z-10 '}>
      
         <select onChange={handleLangChange} value={i18n.language} className= {`w-[120px] border border-white border-opacity-60 ${header==="header"?"":'bg-transparent'}`}>
             {selectOptions.map((lan)=>{

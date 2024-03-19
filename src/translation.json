@@ -2,6 +2,7 @@
     "en": {
       "translation": {
         "English": "English",
+        "Hindi": "हिंदी",
         "sign In": "sign In",
         "Full Name": "Full Name",
         "sign Up": "sign Up",
@@ -62,6 +63,7 @@
     },
     "hi": {
       "translation": {
+        "English": "English",
         "Hindi": "हिंदी",
         "sign In": "साइन इन करें",
         "Full Name": "पूरा नाम",

@@ -167,14 +167,16 @@ const Header = () => {
         </div>
       ) : (
 
-        <div> 
-        <div className="bg-gradient-to-b from-black absolute w-full">
-          <img src={netflixLogo} alt="" className="w-52 ml-[9%]" />
+        <div className="w-full bg-gradient-to-b from-black flex justify-between items-center absolute pl-[3%] pr-[3%] lg:pl-[9%] md:pl-[6%] "> 
+        <div >
+          <img src={netflixLogo} alt="" className="w-36  md:w-44  lg:w-52" />
           {/* <button onClick={handleLogout}>logout</button> */}
         
         </div>
 
-        <MultiLangselect header="header"/>
+       <div>
+       <MultiLangselect header="header"/>
+       </div>
         </div>
       )}
     </>
