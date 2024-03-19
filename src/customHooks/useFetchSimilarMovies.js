@@ -1,4 +1,4 @@
-import {useEffect} from 'react'
+import {useCallback, useEffect} from 'react'
 import {useDispatch,useSelector} from "react-redux"
 
 
@@ -26,14 +26,15 @@ if (currenthovermovieData?.hasOwnProperty('first_air_date')) {
   }
 
 
-   const fetchSimilarMoviesDetails=async ()=>{
+   const fetchSimilarMoviesDetails=useCallback(async ()=>{
     const fetchSimilarMoviesJson= await fetch(Api_URL,API_OPTIONS)
     const fetchSimilarMovies=await fetchSimilarMoviesJson.json()
     dispatch(addNowPlayingHoverSimilarMovies(fetchSimilarMovies?.results))
-   }
+   },[Api_URL,dispatch])
+
 useEffect(()=>{
     fetchSimilarMoviesDetails()
-},[])
+},[fetchSimilarMoviesDetails])
 
 }
 

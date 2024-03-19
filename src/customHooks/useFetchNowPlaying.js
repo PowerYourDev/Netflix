@@ -1,4 +1,4 @@
-import {useEffect} from 'react'
+import {useCallback, useEffect} from 'react'
 import { useDispatch} from "react-redux";
 
 
@@ -21,7 +21,7 @@ const useFetchNowPlaying = (API_ENDPOINT,action) => {
 
 
 
-    const fetchNowPlayingMovies = async () => {
+    const fetchNowPlayingMovies = useCallback(async () => {
         try {
           const nowPlayingMoviesJson = await fetch(
             Base_url + API_ENDPOINT,
@@ -34,10 +34,10 @@ const useFetchNowPlaying = (API_ENDPOINT,action) => {
         } catch (e) {
           console.log(e);
         }
-      };
+      },[Base_url,dispatch,action,API_ENDPOINT]);
       useEffect(() => {
         fetchNowPlayingMovies();
-      }, []); 
+      }, [fetchNowPlayingMovies]); 
     
 }
 

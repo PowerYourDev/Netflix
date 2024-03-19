@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect,useCallback } from "react";
 import { useDispatch,useSelector } from "react-redux";
 
 import { API_OPTIONS, } from "../constant";
@@ -25,31 +25,20 @@ const useFetchLogo = (item, action) => {
  
   }
 
-  const fetchImagePosters = async () => {
+  const fetchImagePosters = useCallback(async () => {
     try {
-      const movieLogosJsonData = await fetch(
-        Api_URL,
-
-        API_OPTIONS
-      );
+      const movieLogosJsonData = await fetch(Api_URL, API_OPTIONS);
       const movieLogosData = await movieLogosJsonData.json();
-  
-      const curentMovieLogo =
-        movieLogosData.length === 0
-          ? null
-          : movieLogosData?.logos[0]?.file_path;
-
-     
-         dispatch(action(curentMovieLogo))
-        
+      const curentMovieLogo = movieLogosData.length === 0 ? null : movieLogosData?.logos[0]?.file_path;
+      dispatch(action(curentMovieLogo));
     } catch (error) {
       console.log(error);
     }
-  };
+  }, [dispatch, action, Api_URL]); // Dependencies for useCallback
 
   useEffect(() => {
     fetchImagePosters();
-  }, [activeItem,item]);
+  }, [fetchImagePosters, activeItem, item]);
 };
 
 export default useFetchLogo;

@@ -1,4 +1,4 @@
-import {useEffect } from "react";
+import {useCallback, useEffect } from "react";
 import { useDispatch,useSelector } from "react-redux";
 
 import { API_OPTIONS } from "../constant";
@@ -28,7 +28,7 @@ const useFetchMovieVideos = (nowPlayingMovie, action) => {
     Api_URL=`https://api.themoviedb.org/3/movie/${nowPlayingMovie?.id}/videos`
  
   }
-  const fetchMovieVideos = async () => {
+  const fetchMovieVideos = useCallback(async () => {
     try {
       const movieVideosJsonData = await fetch(
         Api_URL,
@@ -51,11 +51,11 @@ const useFetchMovieVideos = (nowPlayingMovie, action) => {
     } catch (error) {
       console.log(error);
     }
-  };
+  },[dispatch,action,Api_URL]);
 
   useEffect(() => {
     fetchMovieVideos();
-  }, [activeItem,nowPlayingMovie]);
+  }, [fetchMovieVideos,activeItem,nowPlayingMovie]);
 };
 
 export default useFetchMovieVideos;
