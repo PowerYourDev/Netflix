@@ -13,6 +13,8 @@ import ProfileDropDown from "../utilis/common/ProfileDropDown";
 import search from "../Assets/svg/search.svg"
 import MultiLangselect from "../utilis/common/multiLangselect";
 import { useTranslation } from "react-i18next";
+import hamberger from "../Assets/svg/hamberger.svg"
+import crossIcon from "../Assets/svg/wrongIcon.svg"
 
 const Header = () => {
   const {t}=useTranslation()
@@ -26,6 +28,16 @@ const Header = () => {
 
   const [headerEffect, setHeaderEffect] = useState(false);
   const [profileDropDown,setProfileDropDown]=useState(false)
+  const [sidebar,setSideBar]=useState(false)
+
+  const handleSideBar=()=>{
+    setSideBar(true)
+  }
+
+  const  handleCloseSideBar=()=>{
+    setSideBar(false)
+  }
+  
 
   const handleHeadeEffect = () => {
     if (window.scrollY > 70) {
@@ -83,15 +95,43 @@ const Header = () => {
     <>
   
       {userData ? (
+        <>
+        <div className="fixed top-0 left-0 bg-gradient-to-b from-black to-transparent w-full flex justify-between px-2 py-2 items-center lg:hidden " >
+        <img src={hamberger} alt=""  onClick={handleSideBar}/>
+         
+         <div>
+          <ul className="flex items-center gap-x-2">
+          <li >
+                  <div className="border-[0.5px] rounded border-white bg-black text-white flex py-[2px] px-1 items-center">
+                    <img src={search} alt="" className="pr-2" />
+                  <input type="text" className="border-none outline-none bg-transparent" placeholder={t("search for time waste")}/>
+                  </div>
+               
+                 </li>
+
+          <li onMouseEnter={handleProfileDropDownOnEnter} onMouseLeave={handleProfileDropDownOnLeave}>
+             <img src={profileIcon} alt="" />
+
+             {profileDropDown&&
+              <ProfileDropDown handleLogout={handleLogout} profileDropDown={profileDropDown}/>
+            }
+             </li>
+          </ul>
+
+         </div>
+
+
+        </div>
         <div
           className={`${
-            headerEffect ? "bg-[#141414]" : "bg-transparent"
-          } bg-gradient-to-b from-black to-transparent fixed top-0 left-0 z-30 w-full h-[70px]  px-[3%] transition-all duration-500 ease-in flex justify-between items-center`}
+            headerEffect ? "lg:bg-[#141414]" : "lg:bg-transparent"
+          } ${ sidebar ? "block" : "hidden" } bg-gradient-to-b from-black to-transparent  z-30  pt-[13%]  px-[3%] lg:py-0 transition-all duration-500 ease-in   flex flex-col h-full w-1/2 fixed overflow-y-scroll left-0 top-0 gap-y-5 bg-black lg:flex-row lg:flex  lg:w-full lg:justify-between lg:items-center lg:fixed lg:top-0 lg:left-0 lg:h-[70px]`}
         >
-          <div className="flex items-center gap-x-10">
-            <img src={netflixLogo} alt="" className="w-[150px] h-[50px] " />
-
-            <ul className="flex gap-x-5 text-[#e5e5e5] text-[14px]">
+             <img src={crossIcon} alt="" srcset="" className="absolute top-[3%] right-[5%] lg:hidden" onClick={handleCloseSideBar}/>
+          <div className="flex items-center gap-y-10  lg:gap-x-10 flex-col lg:flex-row">
+            <img src={netflixLogo} alt="" className="w-[150px] h-[50px]" />
+           
+            <ul className="flex gap-y-5 items-center lg:gap-x-5 text-[#e5e5e5] text-[14px] flex-col lg:flex-row">
               <li
                 className={`${
                   activeItem === "/movies-browse" && "font-bold"
@@ -136,8 +176,8 @@ const Header = () => {
           </div>
 
           <div>
-            <ul className="flex gap-5 text-[#e5e5e5] items-center">
-                 <li className="">
+            <ul className="flex gap-y-5 lg:gap-x-5 text-[#e5e5e5] items-center flex-col lg:flex-row">
+                 <li className="hidden lg:block">
                   <div className="border-[0.5px] border-white bg-black  flex py-[6px] px-2 items-center">
                     <img src={search} alt="" className="pr-2" />
                   <input type="text" className="border-none outline-none bg-transparent" placeholder={t("search for time waste")}/>
@@ -153,18 +193,18 @@ const Header = () => {
               >
                 {t("Children")}
               </li>
-             <li onMouseEnter={handleProfileDropDownOnEnter} onMouseLeave={handleProfileDropDownOnLeave} className="relative">
+             <li onMouseEnter={handleProfileDropDownOnEnter} onMouseLeave={handleProfileDropDownOnLeave} className="relative hidden lg:block">
              <img src={profileIcon} alt="" />
 
              {profileDropDown&&
               <ProfileDropDown handleLogout={handleLogout} profileDropDown={profileDropDown}/>
             }
              </li>
-
-           
+          
             </ul>
           </div>
         </div>
+        </>
       ) : (
 
         <div className="w-full bg-gradient-to-b from-black flex justify-between items-center absolute pl-[3%] pr-[3%] lg:pl-[9%] md:pl-[6%] "> 
