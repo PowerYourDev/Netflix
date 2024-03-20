@@ -57,6 +57,10 @@ const CardPopup = ({ active, item, handleClosePopUp  }) => {
     navigate("/movie-playing/selected");
   };
 
+  const handleNavigateForSm=()=>{
+    navigate("/movie-details");
+  }
+
   const expandPopUpHandler = () => {
     setExpandPopUp(true);
   };
@@ -119,24 +123,24 @@ const CardPopup = ({ active, item, handleClosePopUp  }) => {
       {/* bg-opacity-[0.7] */}
      
         <div
-          className="bg-black fixed top-0 left-0  right-0 bottom-0 m-auto  w-1/5  h-1/5 z-30"
-          style={{
-            animationName: active ? "card" : "card-exit",
-            animationDuration: "0.6s",
-            animationFillMode: "forwards",
-            animationTimingFunction: "cubic-bezier(0.25, 0.1, 0.25, 1.0)",
-            // zIndex: 20,
+          className="bg-black fixed top-0 left-0  right-0 bottom-0 m-auto w-[88%] sm:w-3/4 md:w-1/2 lg:w-[27%] h-fit z-30"
+          // style={{
+          //   animationName: active ? "card" : "card-exit",
+          //   animationDuration: "0.6s",
+          //   animationFillMode: "forwards",
+          //   animationTimingFunction: "cubic-bezier(0.25, 0.1, 0.25, 1.0)",
+          //   // zIndex: 20,
 
-            // animationDelay: !active ? "0.1s" : "0s",
-            // transform: "scale(1.5)",
-          }}
+          //   // animationDelay: !active ? "0.1s" : "0s",
+          //   // transform: "scale(1.5)",
+          // }}
         >
           <div className="relative">
             {hoverMovie ? (
               <div className="w-full h-full -mt-[7%] bg-black">
                 <iframe
                   onClick={() => videoPlayHandler(item?.id)}
-                  className="w-full h-full aspect-video "
+                  className="w-full h-full aspect-video"
                   src={`https://www.youtube.com/embed/${hoverMovie?.key}?autoplay=1&mute=1&controls=0&showinfo=0&modestbranding=1&frameborder=0`}
                   title="YouTube video player"
                   allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
@@ -156,24 +160,24 @@ const CardPopup = ({ active, item, handleClosePopUp  }) => {
             />
 
 <div
-          className="absolute top-[14%] right-[4%] bg-[#181818] p-[5px] inline-block rounded-full  mx-[0.25em] cursor-pointer"
+          className="absolute top-[14%] right-[4%] bg-[#181818] p-[0.6rem] inline-block rounded-full  mx-[0.25em] cursor-pointer"
           onClick={handleClosePopUp}
         >
           <img src={crossIcon} alt="crossIcon" />
         </div>
           </div>
-          <div className="p-4 bg-[#181818] ">
-            <div className="flex justify-between ">
+          <div className="px-3 md:px-5 py-6 bg-[#181818] ">
+            <div className="flex justify-between mb-[0.5em] ">
               <div>
                 <div
-                  className="border border-solid border-[rgba(255, 255, 255, 0.7)] p-[8px] inline-block rounded-full mx-[0.25em] bg-white bg-opacity-70 cursor-pointer"
+                  className="border border-solid border-[rgba(255, 255, 255, 0.7)] p-[0.7rem] inline-block rounded-full mx-[0.35em] bg-white bg-opacity-70 cursor-pointer"
                   onClick={() => videoPlayHandler()}
                 >
                   <img src={playIcon} alt="playIcon" />
                 </div>
                 {MylistMovies?.some((list) => list?.id === item.id) ? (
                   <div
-                    className="border border-solid border-[rgba(255, 255, 255, 0.7)] p-[8px] inline-block rounded-full  mx-[0.25em] cursor-pointer"
+                    className="border border-solid border-[rgba(255, 255, 255, 0.7)] p-[0.7rem] inline-block rounded-full  mx-[0.35em] cursor-pointer"
                     onClick={() => {
                       handleRemoveListItem(item);
                     }}
@@ -182,7 +186,7 @@ const CardPopup = ({ active, item, handleClosePopUp  }) => {
                   </div>
                 ) : (
                   <div
-                    className="border border-solid border-[rgba(255, 255, 255, 0.7)] p-[8px] inline-block rounded-full mx-[0.25em] cursor-pointer"
+                    className="border border-solid border-[rgba(255, 255, 255, 0.7)] p-[0.7rem] inline-block rounded-full mx-[0.25em] cursor-pointer"
                     onClick={() => {
                       handleSetListItem(item);
                     }}
@@ -200,26 +204,33 @@ const CardPopup = ({ active, item, handleClosePopUp  }) => {
               </div>
               <div>
                 <div
-                  className="border border-solid border-[rgba(255, 255, 255, 0.7)] p-[8px] inline-block rounded-full mx-[0.25em] cursor-pointer"
+                  className="border border-solid border-[rgba(255, 255, 255, 0.7)] p-[0.7rem]  rounded-full mx-[0.35em] cursor-pointer hidden md:inline-block"
                   onClick={expandPopUpHandler}
+                >
+                  <img src={expandIcon} alt="expandIcon" />
+                </div>
+
+                <div
+                  className="border border-solid border-[rgba(255, 255, 255, 0.7)] p-[0.7rem] inline-block rounded-full mx-[0.35em] cursor-pointer  md:hidden"
+                  onClick={handleNavigateForSm}
                 >
                   <img src={expandIcon} alt="expandIcon" />
                 </div>
               </div>
             </div>
-            <div className="flex text-[#bcbcbc] gap-[0.5em] my-[0.8em]">
-              <h3 className="text-green-500 font-medium text-[13px]">
+            <div className="flex flex-wrap text-[#bcbcbc] gap-[0.2em] md:gap-[0.6em] my-[0.8em] ">
+              <h3 className="text-green-500 font-medium text-[16px]">
                 {movieDetails?.vote_average?.toFixed(2)}{t("% Rating")}
               </h3>
 
-              <h5 className="border-solid border-[hsla(0, 0%, 100%, .4)] border-[0.5px] text-[13px] font-medium px-[0.4em]">
+              <h5 className="border-solid border-[hsla(0, 0%, 100%, .4)] border-[0.5px] text-[16px] font-medium px-[0.4em]">
                 {movieDetails?.adult ? t("A") : t("U/A 16+")}
               </h5>
 
-              <h3 className="text-[13px] font-medium ">
+              <h3 className="text-[16px] font-medium ">
                 {convertMinutesToHoursAndMinutes(movieDetails?.runtime)}
               </h3>
-              <h6 className="text-[hsla(0, 0%, 100%, .9)] border-solid border-[hsla(0, 0%, 100%, .4)] border-[0.5px] px-[0.4em] text-[13px]">
+              <h6 className="text-[hsla(0, 0%, 100%, .9)] border-solid border-[hsla(0, 0%, 100%, .4)] border-[0.5px] px-[0.4em] text-[16px]">
                 {t("HD")}
               </h6>
             </div>
@@ -228,9 +239,9 @@ const CardPopup = ({ active, item, handleClosePopUp  }) => {
               {movieDetails?.genres?.map((genre, index) => {
                 return (
                   <>
-                    <h4>{genre.name}</h4>
+                    <h4 className="text-[16px]">{genre.name}</h4>
                     {index < movieDetails?.genres.length - 1 && (
-                      <h4 className="text-gray-600 px-[7px] self-center">•</h4>
+                      <h4 className="text-gray-600 px-[7px] self-center ">•</h4>
                     )}
                   </>
                 );

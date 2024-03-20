@@ -14,6 +14,7 @@ import HomePage from './pages/Home';
 import TvShows from './pages/TvShows';
 import NewPopular from './pages/NewPopular';
 import Children from './pages/children';
+import MovieDetailsSm from "./utilis/common/movieDetailsSm"
 
 
 const appRouter=createBrowserRouter([
@@ -49,9 +50,14 @@ const appRouter=createBrowserRouter([
         element:<Children/>,
       },
       {
+        path:"/movie-details",
+        element:<MovieDetailsSm/>,
+      },
+      {
         path:"/movie-playing/:id",
         element:<FullVideo/>,
       }
+
     ]
   }
   
