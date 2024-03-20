@@ -125,7 +125,7 @@ const CardPopup = ({ active, item, handleClosePopUp  }) => {
             animationDuration: "0.6s",
             animationFillMode: "forwards",
             animationTimingFunction: "cubic-bezier(0.25, 0.1, 0.25, 1.0)",
-            zIndex: 20,
+            // zIndex: 20,
 
             // animationDelay: !active ? "0.1s" : "0s",
             // transform: "scale(1.5)",

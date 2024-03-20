@@ -37,7 +37,7 @@ const Card = ({ item }) => {
       
         <img
           src={POSTER_CDN + item?.poster_path} alt=""
-          className="h-32 sm:h-36 md:h-60"
+          className="h-36 sm:h-40 md:h-60"
           onClick={()=>posterPopupHandler(item)}
         />
      </>
