@@ -125,7 +125,7 @@ const Header = () => {
         <div
           className={`${
             headerEffect ? "lg:bg-[#141414]" : "lg:bg-transparent"
-          } ${ sidebar ? "block" : "hidden" } bg-gradient-to-b from-black to-transparent  z-30  pt-[13%]  px-[3%] lg:py-0 transition-all duration-500 ease-in   flex flex-col h-full w-1/2 fixed overflow-y-scroll left-0 top-0 gap-y-5 bg-black lg:flex-row lg:flex  lg:w-full lg:justify-between lg:items-center lg:fixed lg:top-0 lg:left-0 lg:h-[70px]`}
+          } ${ sidebar ? "block" : "hidden" } bg-gradient-to-b from-black to-transparent  z-30  pt-[13%]  px-[3%] lg:py-0 transition-all duration-500 ease-in   flex flex-col h-full w-9/12 fixed left-0 top-0 gap-y-5 bg-black lg:flex-row lg:flex  lg:w-full lg:justify-between lg:items-center lg:fixed lg:top-0 lg:left-0 lg:h-[70px]`}
         >
              <img src={crossIcon} alt="" srcset="" className="absolute top-[3%] right-[5%] lg:hidden" onClick={handleCloseSideBar}/>
           <div className="flex items-center gap-y-10  lg:gap-x-10 flex-col lg:flex-row">
