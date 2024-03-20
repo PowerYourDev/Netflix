@@ -33,7 +33,7 @@ const Card = ({ item }) => {
     
 
      
-      <div className="h-[141px] w-[230px] cursor-pointer">
+      <div className="h-[50px] w-[70px] sm:h-[70px] sm:w-[100px] md:h-[100px] md:w-[130px] lg:h-[141px] lg:w-[230px] cursor-pointer">
         <img
           src={POSTER_CDN + item?.poster_path} alt=""
           className="w-full h-full object-cover"
