@@ -25,7 +25,8 @@ const Card = ({ item }) => {
 
   return (
 
-    <div>
+    // <div>
+    <>
       {/* <div className={active && "fixed top-0 left-0 w-full h-full bg-[#000] bg-opacity-[0.7] z-1 overflow-hidden"}/> */}
       {active && (
         <CardPopup item={item} active={active} setActive={setActive} handleClosePopUp={handleClosePopUp}/>
@@ -33,14 +34,14 @@ const Card = ({ item }) => {
     
 
      
-      <div className="h-[50px] w-[70px] sm:h-[70px] sm:w-[100px] md:h-[100px] md:w-[130px] lg:h-[141px] lg:w-[230px] cursor-pointer">
+      
         <img
           src={POSTER_CDN + item?.poster_path} alt=""
-          className="w-full h-full object-cover"
+          className="h-32 sm:h-36 md:h-60"
           onClick={()=>posterPopupHandler(item)}
         />
-      </div>
-    </div>
+     </>
+    // </div>
   
   );
 };

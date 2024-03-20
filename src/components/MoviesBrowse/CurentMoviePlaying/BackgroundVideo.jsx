@@ -27,7 +27,7 @@ const BackgroundVideo = (nowPlayingMovie) => {
   return (
     <>
       {video ? (
-        <div className="w-full h-full -mt-[7%]">
+        <div className="w-full h-full   md:-mt-[7%]">
           <iframe
             className="w-full h-full aspect-video "
             src={`https://www.youtube.com/embed/${video?.key}?autoplay=1&mute=1&controls=0&showinfo=0&modestbranding=1&frameborder=0`}

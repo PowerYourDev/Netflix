@@ -61,7 +61,7 @@ const CurrentmoviePlaying = () => {
    if(!nowPlayingMoviesData || !nowPlayingVideo) return <ShimmerUi/>
 
   return (
-    <div>
+    <div className='bg-inherit'>
        
    
        {console.log("header")}

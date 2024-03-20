@@ -27,7 +27,7 @@ const MoviesBrowse = () => {
   //   )
   // }   
   return (
-    <div>
+    <div className="bg-black h-screen">
      
       <Header />
       {/* video playing container */}

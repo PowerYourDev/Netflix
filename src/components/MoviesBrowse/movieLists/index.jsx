@@ -24,8 +24,8 @@ const MovieLists = () => {
 
 
   return (
-     <div className='bg-black -mt-[12%]'>
-        <div >
+     <div className='md:-mt-[12%]'>
+        <div>
         <Cardrow title={getActiveItems(activeItem,t("NOW PLAYING MOVIES"),t("NOW PLAYING SHOWS"))} data={nowPlaying}/>
         </div>
 
@@ -33,7 +33,7 @@ const MovieLists = () => {
         <Cardrow title={getActiveItems(activeItem,t("POPULAR MOVIES"),t("POPULAR SHOWS"))} data={popular}/>
         </div>
 
-        <div  className='mt-[3%]'>
+        <div  className='my-[3%]'>
         <Cardrow title={getActiveItems(activeItem,t("UPCOMING MOVIES"),t("UPCOMING SHOWS"))} data={upComing}/>
         </div>
 

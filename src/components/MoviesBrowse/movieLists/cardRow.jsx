@@ -16,7 +16,7 @@ const Cardrow = ({ title, data }) => {
           title === t("My List")
             ? "flex-wrap gap-y-4"
             : "overflow-x-scroll no-scrollbar overflow-visible"
-        } flex gap-x-1 sm:gap-x-2 md:gap-x-3 lg:gap-x-4`}
+        } flex gap-x-3 md:gap-x-4`}
       >
         {data && data?.map((item) => <Card key={item.id} item={item}  />)}
       </div>

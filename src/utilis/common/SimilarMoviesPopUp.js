@@ -33,14 +33,14 @@ const SimilarMoviesPopUp = ({handleRemoveListItem,handleSetListItem}) => {
             // onClick={handleSimilarMovie}
             >
            
-               <div className="w-full h-[170px] ">
+              
                <img
                   src={POSTER_CDN + movie?.poster_path}
                   alt={movie?.original_name || movie?.original_title }
                   srcset=""
-                  className="object-cover h-full w-full"
+                  className="h-60"
                 />
-               </div>
+              
                    <div className="p-[1.2em] bg-[#2f2f2f]  text-[#bcbcbc] flex-grow">
                 <div className="flex justify-between items-center ">
                   <div className="flex w-1/2 flex-wrap text-[16px] items-center gap-x-2 ">

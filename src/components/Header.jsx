@@ -101,8 +101,8 @@ const Header = () => {
          
          <div>
           <ul className="flex items-center gap-x-2">
-          <li >
-                  <div className="border-[0.5px] rounded border-white bg-black text-white flex py-[2px] px-1 items-center">
+          <li className="">
+                  <div className="border-[0.5px] rounded border-white bg-black text-white flex py-[1px] px-1 items-center">
                     <img src={search} alt="" className="pr-2" />
                   <input type="text" className="border-none outline-none bg-transparent" placeholder={t("search for time waste")}/>
                   </div>
