@@ -34,7 +34,7 @@ const ExpandPopup = ({
   useFetchSimilarMovies(item.id);
 
   return (
-    <div className="w-3/5 h-screen bg-black fixed top-[35px] left-0 right-0  mx-auto z-40 rounded-2xl  overflow-y-scroll no-scrollbar ">
+    <div className="md:w-4/5 lg:w-3/5 h-screen bg-black fixed top-[35px] left-0 right-0  mx-auto z-40 rounded-2xl  overflow-y-scroll no-scrollbar ">
       <div className="relative">
         {hoverMovie?.key ? (
           <div className="w-full h-full bg-gradient-to-t from-[#181818] to-transparent bg-opacity-100">

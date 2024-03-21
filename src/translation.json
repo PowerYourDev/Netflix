@@ -58,7 +58,8 @@
         "A":"A",
         "HD":"HD",
 
-        "More Like This":"More Like This"
+        "More Like This":"More Like This",
+        "Title details":"Title details"
       }
     },
     "hi": {
@@ -119,9 +120,9 @@
         "HD": "HD",
 
 
-        "More Like This": "इसके जैसा और"
+        "More Like This": "इसके जैसा और",
   
-       
+        "Title details":"शीर्षक विवरण"
     
     
     
