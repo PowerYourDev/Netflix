@@ -113,7 +113,7 @@ const Login = () => {
 
   return (
     <div
-      className="h-screen"
+      className="h-dvh"
       style={{ backgroundImage: `url(${netflixBgimage})` }}
     >
       <Header />
