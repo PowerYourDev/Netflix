@@ -24,7 +24,7 @@ const SimilarMoviesPopUp = ({handleRemoveListItem,handleSetListItem}) => {
   // }
 
   return (
-    <div className="text-white mt-[48px]">
+    <div className="text-white mt-[48px] mb-[90px]">
       <h1 className="mb-[20px] font-medium text-[24px]">{t("More Like This")}</h1>
       <div className="grid grid-cols-3 gap-[1em] ">
         {similarMovieData?.map((movie) => {
@@ -37,7 +37,10 @@ const SimilarMoviesPopUp = ({handleRemoveListItem,handleSetListItem}) => {
                <img
                   src={POSTER_CDN + movie?.poster_path}
                   alt={movie?.original_name || movie?.original_title }
-                  srcset=""
+                  onError={event => {
+                    event.target.src = "https://t3.ftcdn.net/jpg/01/01/89/46/360_F_101894688_RVSZUtDfPR6Cr5eBDQI7Qo5pZ01jmyK3.jpg"
+                    event.onerror = null
+                  }}
                   className="h-60"
                 />
               
@@ -50,7 +53,7 @@ const SimilarMoviesPopUp = ({handleRemoveListItem,handleSetListItem}) => {
                     <h6 className=" border border-solid border-white border-opacity-40 text-[0.7em] font-medium px-[0.5em] ">
                       HD
                     </h6>
-                    <h3>{extractYear(movie?.release_date)}</h3>
+                    <h3>{movie?.hasOwnProperty('first_air_date') ? extractYear(movie?.first_air_date) : extractYear(movie?.release_date)}</h3>
                   </div>
 
                   {MylistMovies?.some((list) => list?.id === movie.id) ? (
@@ -80,10 +83,7 @@ const SimilarMoviesPopUp = ({handleRemoveListItem,handleSetListItem}) => {
         })}
       </div>
 
-      <div className="mt-[10%] text-white">
-        dlddiso
-        kdikdi
-      </div>
+      
     </div>
   );
 };

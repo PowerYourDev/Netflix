@@ -1,11 +1,13 @@
 //truncating string 
-export const truncateString=(text, maxLength) =>{
-    if (text?.length <= maxLength) {
-      return text;
-    } else {
-      return text?.substring(0, maxLength) + '...';
-    }
+export const truncateString = (text, maxLength) => {
+  if (!text || text.length === 0) {
+    return "Description not available";
+  } else if (text.length <= maxLength) {
+    return text;
+  } else {
+    return text.substring(0, maxLength) + '...';
   }
+};
 
   // converting minutes to requried format
  export const convertMinutesToHoursAndMinutes=(minutes) =>{
