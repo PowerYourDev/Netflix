@@ -11,6 +11,7 @@ import useFetchSimilarMovies from "../../customHooks/useFetchSimilarMovies";
 import SimilarMoviesPopUp from "./SimilarMoviesPopUp";
 import { extractYear } from "../common/index";
 import { useTranslation } from "react-i18next";
+import useFetchCastCrew from "../../customHooks/useFetchCastCrew";
 
 const ExpandPopup = ({
   hoverMovie,
@@ -26,12 +27,18 @@ const ExpandPopup = ({
   const navigate = useNavigate();
 
   const MylistMovies = useSelector((state) => state?.MyList?.myListData);
+  const movieCastCrew = useSelector(
+    (state) =>
+      state?.moviesSlice?.nowPlayingHoverMovieVideo?.playingHoverCastCrew
+  );
+  console.log(movieCastCrew,"movieCastCrew")
 
   const videoPlayHandler = (id) => {
     navigate("/movie-playing/" + id);
   };
 
   useFetchSimilarMovies(item.id);
+  useFetchCastCrew(item.id)
 
   return (
     <div className="md:w-4/5 lg:w-3/5 h-screen bg-black fixed top-[35px] left-0 right-0  mx-auto z-40 rounded-2xl  overflow-y-scroll no-scrollbar ">
@@ -160,32 +167,33 @@ const ExpandPopup = ({
           <div className="text-white my-[0.5em]">
             <div className="flex flex-wrap">
               <span className="text-[#777]">Cast: </span>
-              {movieDetails?.genres?.map((genre, index) => {
-                return (
-                  <h3 className=" ml-1">
-                    {genre?.name}
-                    {index < movieDetails?.genres.length - 1 && (
-                      <span className="text-white">,</span>
-                    )}
-                  </h3>
-                );
-              })}
+              
+               {movieCastCrew?.cast?.slice(0, 4).map((actor, index) => (
+      <React.Fragment key={actor.id}>
+        <h3 className="ml-1">{actor?.name}</h3>
+        {index < 3 && <span className="text-white">,</span>}
+        {index === 3 && (
+          <span className="text-white">{t(", more")}</span>
+        )}
+      </React.Fragment>
+    ))}
             </div>
           </div>
 
           <div className="text-white my-[0.5em]">
             <div className="flex flex-wrap">
-              <span className="text-[#777]">Cast: </span>
-              {movieDetails?.genres?.map((genre, index) => {
-                return (
-                  <h3 className=" ml-1">
-                    {genre?.name}
-                    {index < movieDetails?.genres.length - 1 && (
-                      <span className="text-white">,</span>
-                    )}
-                  </h3>
-                );
-              })}
+              <span className="text-[#777]">Crew: </span>
+              {
+  movieCastCrew?.crew?.filter(actor => actor["known_for_department"] === "Directing").slice(0, 4).map((actor, index,arr) => (
+    <React.Fragment key={`${actor.id}-${index}`}>
+      <h3 className="ml-1">{actor?.name}</h3>
+      {index < arr.length -1 && <span className="text-white">,</span>}
+      {index === 3 && (
+        <span className="text-white">{t(", more")}</span>
+      )}
+    </React.Fragment>
+  ))
+}
             </div>
           </div>
         </div>

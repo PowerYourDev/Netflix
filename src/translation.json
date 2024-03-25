@@ -31,8 +31,8 @@
         "search for time waste": "search for time waste",
         "Children": "Children",
   
-        "change Profile": "change Profile",
-        "change Language": "change Language",
+        "Change Profile": "change Profile",
+        "Change Language": "change Language",
         "Sign out of Netflix": "Sign out of Netflix",
   
         "Play": "Play",
@@ -59,7 +59,11 @@
         "HD":"HD",
 
         "More Like This":"More Like This",
-        "Title details":"Title details"
+        "Title details":"Title details",
+
+        ", more":", more",
+        "Cast":"Cast",
+        "Crew":"crew"
       }
     },
     "hi": {
@@ -94,8 +98,8 @@
         "search for time waste": "समय बर्बाद करने के लिए खोजें",
         "Children": "बच्चे",
   
-        "change Profile": "प्रोफ़ाइल बदलें",
-        "change Language": "भाषा बदलें",
+        "Change Profile": "प्रोफ़ाइल बदलें",
+        "Change Language": "भाषा बदलें",
         "Sign out of Netflix": "Netflix से लॉग आउट करें",
   
         "Play": "चलाएं",
@@ -122,7 +126,11 @@
 
         "More Like This": "इसके जैसा और",
   
-        "Title details":"शीर्षक विवरण"
+        "Title details":"शीर्षक विवरण",
+
+        ", more":", अधिक",
+        "Cast": "कास्ट",
+        "Crew": "क्रू"
     
     
     

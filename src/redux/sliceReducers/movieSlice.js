@@ -27,6 +27,7 @@ const moviesSlice = createSlice({
       playingHoverMovieLogo:null,
       playingHoverMovieDetails:null,
       playingHoverSimilarMovies:null,
+      playingHoverCastCrew:null
 
     },
 
@@ -57,6 +58,9 @@ const moviesSlice = createSlice({
     },
     addNowPlayingHoverMovieData:(state,action)=>{
       state.nowPlayingHoverMovieVideo.playingHoverMovieData=action.payload
+    },
+    addNowPlayingHoverMovieCastCrew:(state,action)=>{
+      state.nowPlayingHoverMovieVideo.playingHoverCastCrew=action.payload
     },
 
 
@@ -94,7 +98,7 @@ const moviesSlice = createSlice({
      state.nowPlayingHoverMovieVideo.playingHoverMovieLogo=null;
      state.nowPlayingHoverMovieVideo.playingHoverMovieDetails=null;
      state.nowPlayingHoverMovieVideo.playingHoverSimilarMovies=null;
-
+     state.nowPlayingHoverMovieVideo.playingHoverCastCrew=null;
     },
 
     makingToIntialState: (state, action) => {
@@ -136,8 +140,10 @@ export const {
   addNowPlayingHoverMovieDetails,
   addNowPlayingHoverSimilarMovies,
   addNowPlayingHoverMovieData,
+  addNowPlayingHoverMovieCastCrew,
   makingToIntialState,
   makingHoverToIntialState,
+
 
   addPopularMovies,
   addUpComingMovies,
