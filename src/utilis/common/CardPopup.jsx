@@ -53,8 +53,8 @@ const CardPopup = ({ active, item, handleClosePopUp  }) => {
   useFetchLogo(item,addNowPlayingHoverMovieLogo);
   useFetchMovieDetaills(item?.id);
 
-  const videoPlayHandler = () => {
-    navigate("/movie-playing/selected");
+  const videoPlayHandler = (id) => {
+    navigate("/movie-playing/"+id);
   };
 
   const handleNavigateForSm=()=>{
@@ -171,7 +171,7 @@ const CardPopup = ({ active, item, handleClosePopUp  }) => {
               <div>
                 <div
                   className="border border-solid border-[rgba(255, 255, 255, 0.7)] p-[0.7rem] inline-block rounded-full mx-[0.35em] bg-white bg-opacity-70 cursor-pointer"
-                  onClick={() => videoPlayHandler()}
+                  onClick={() => videoPlayHandler(item?.id)}
                 >
                   <img src={playIcon} alt="playIcon" />
                 </div>

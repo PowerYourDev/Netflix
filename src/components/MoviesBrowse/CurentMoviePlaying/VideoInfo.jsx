@@ -38,8 +38,8 @@ console.log(nowPlayingMovie,"nowplayinng,ovie")
   const NowPlayingMovieLogoAction=getActiveItems(activeItem,addNowPlayingBackGroundMovieLogo,addNowPlayingTvShowsLogo)
 
 
-  const handlePlay = () => {
-    navigate("/movie-playing/banner-movie");
+  const handlePlay = (id) => {
+    navigate("/movie-playing/"+id);
   };
 
   const handleMoreInfo=(nowPlayingMovie)=>{

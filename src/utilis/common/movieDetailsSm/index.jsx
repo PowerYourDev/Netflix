@@ -7,6 +7,7 @@ import crossIcon from "../../../Assets/svg/crossIcon.svg";
 import { useNavigate } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import useFetchSimilarMovies from "../../../customHooks/useFetchSimilarMovies";
+import useFetchCastCrew from "../../../customHooks/useFetchCastCrew";
 
 const MovieDetailsSm = () => {
   // const dispatch=useDispatch()
@@ -38,12 +39,18 @@ const MovieDetailsSm = () => {
     (state) =>
       state.moviesSlice?.nowPlayingHoverMovieVideo?.playingHoverSimilarMovies
   );
+  const movieCastCrew = useSelector(
+    (state) =>
+      state?.moviesSlice?.nowPlayingHoverMovieVideo?.playingHoverCastCrew
+  );
+  console.log(movieCastCrew)
 
   const handleNavigateBack = () => {
     navigate(activeItem);
   };
 
   useFetchSimilarMovies(item.id);
+  useFetchCastCrew(item.id)
 
   // useEffect(()=>{
   //   console.log("mounting")

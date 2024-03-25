@@ -7,9 +7,11 @@ import { truncateString } from "./index";
 import { extractYear } from "./index";
 import crossIcon from "../../Assets/svg/crossIcon.svg";
 import { useTranslation } from "react-i18next";
+import { useNavigate } from "react-router-dom";
 
 const SimilarMoviesPopUp = ({handleRemoveListItem,handleSetListItem}) => {
   const {t}=useTranslation()
+  const navigate = useNavigate();
 
 
   const similarMovieData = useSelector(
@@ -19,9 +21,9 @@ const SimilarMoviesPopUp = ({handleRemoveListItem,handleSetListItem}) => {
 
   const MylistMovies = useSelector((state) => state?.MyList?.myListData);
 
-  // const handleSimilarMovie=()=>{
-    
-  // }
+  const handleSimilarFullVideo=(id)=>{
+    navigate("/movie-playing/" + id);
+  }
 
   return (
     <div className="text-white mt-[48px] mb-[90px]">
@@ -29,8 +31,8 @@ const SimilarMoviesPopUp = ({handleRemoveListItem,handleSetListItem}) => {
       <div className="grid grid-cols-3 gap-[1em] ">
         {similarMovieData?.map((movie) => {
           return (
-            <div key={movie.id} className="flex flex-col" 
-            // onClick={handleSimilarMovie}
+            <div key={movie.id} className="flex flex-col cursor-pointer" 
+            onClick={()=>handleSimilarFullVideo(movie?.id)}
             >
            
               
