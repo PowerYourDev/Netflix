@@ -49,6 +49,10 @@ const MovieDetailsSm = () => {
     navigate(activeItem);
   };
 
+  const handleFullVideo=(id)=>{
+     navigate("/movie-playing/"+id);
+  }
+
   useFetchSimilarMovies(item.id);
   useFetchCastCrew(item.id)
 
@@ -147,7 +151,7 @@ const MovieDetailsSm = () => {
         <h1 className="text-[#999] text-[1.2em] font-bold">
           {t("More Like This")}
         </h1>
-        <div className="mt-[0.5em] flex flex-wrap  gap-2">
+        <div className="mt-[0.5em] flex flex-wrap  gap-2" >
           {similarMovieData?.map((movie) => {
             if (!movie?.poster_path) return null;
             return (
@@ -155,6 +159,7 @@ const MovieDetailsSm = () => {
                 src={POSTER_CDN + movie?.poster_path}
                 alt=""
                 className="h-36 rounded-md sm:h-40"
+                onClick={()=>handleFullVideo(movie.id)}
               />
             );
           })}
